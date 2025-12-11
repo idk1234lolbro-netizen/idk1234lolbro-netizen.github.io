@@ -1,21 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CrossWorld League</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CrossWorld League — Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">CWL</span>
+        <span class="brand-text">CrossWorld League</span>
+      </a>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="staff.html">Staff</a>
-    <a href="players.html">Players & Teams</a>
-    <a href="contact.html">Contact</a>
-</nav>
+      <button id="nav-toggle" aria-label="Toggle navigation" class="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
 
-<h1>CrossWorld League</h1>
-<p>The future of Soccer Zero competition.</p>
+      <nav class="nav" id="site-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="staff.html" class="nav-link">Staff</a>
+        <a href="players.html" class="nav-link">Players & Teams</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-title">The future of Soccer Zero competition</h1>
+        <p class="hero-sub">
+          CrossWorld League brings organized, fair, and competitive Soccer Zero gameplay to Roblox — backed by our own bot and website for exclusive features and events.
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="about.html">Learn More</a>
+          <a class="btn btn-ghost" href="contact.html">Join Discord</a>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <h3>Custom Bot</h3>
+            <p>Coins, perks, and league automation tailored to CWL.</p>
+          </article>
+
+          <article class="feature">
+            <h3>Official Website</h3>
+            <p>Rules, events, and team pages — neatly organized and always available.</p>
+          </article>
+
+          <article class="feature">
+            <h3>Live Events</h3>
+            <p>Mod events and competitions that let players shine.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="hero-decor"></div>
+    </section>
+
+    <section class="preview container">
+      <h2>What’s happening now</h2>
+      <div class="grid">
+        <div class="card">
+          <h4>Website: Test Live</h4>
+          <p>Core pages up. More features coming after game release.</p>
+        </div>
+        <div class="card">
+          <h4>Mod Event</h4>
+          <p>Active mod activities — join to participate and earn recognition.</p>
+        </div>
+        <div class="card">
+          <h4>Teams & Players</h4>
+          <p>Player & team roles will be added when Soccer Zero mechanics are clear.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="muted">© <span id="year"></span> CrossWorld League — Owned by HammerOfThor • Chairman: Meow</p>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

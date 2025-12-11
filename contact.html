@@ -1,27 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — CrossWorld League</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">CWL</span>
+        <span class="brand-text">CrossWorld League</span>
+      </a>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="staff.html">Staff</a>
-    <a href="players.html">Players & Teams</a>
-    <a href="contact.html">Contact</a>
-</nav>
+      <button id="nav-toggle" aria-label="Toggle navigation" class="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
 
-<h1>Contact Us</h1>
+      <nav class="nav" id="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="staff.html" class="nav-link">Staff</a>
+        <a href="players.html" class="nav-link">Players & Teams</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<p>
-Need help or have questions?<br>
-Discord: Your server<br>
-Staff DMs: Any admin or mod<br>
-Website Support: Coming soon
-</p>
+  <main class="container content">
+    <section class="section">
+      <h1>Contact</h1>
+      <p class="lead">Need help or want to join? Reach out below.</p>
 
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Discord</h3>
+          <p>Join our server for live support and updates.</p>
+          <a class="btn btn-ghost" href="#" onclick="window.location.href='https://discord.gg/';return false">Open Discord</a>
+        </div>
+
+        <div class="contact-card">
+          <h3>Staff DMs</h3>
+          <p>Message any admin or moderator for help.</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Website Support</h3>
+          <p>Coming soon — site admin tools and support pages.</p>
+        </div>
+      </div>
+
+      <div class="small-note">
+        <p>If you'd like a direct contact added (owner/chairman), tell us the usernames and we'll list them here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="muted">© <span id="year-5"></span> CrossWorld League</p>
+    </div>
+  </footer>
 </body>
 </html>

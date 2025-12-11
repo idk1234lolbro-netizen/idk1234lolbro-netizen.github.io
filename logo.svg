@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="56" viewBox="0 0 240 56">
+  <rect width="240" height="56" rx="8" fill="#0f1724" />
+  <text x="16" y="36" fill="#16a34a" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">CWL</text>
+  <circle cx="200" cy="28" r="12" fill="#16a34a" opacity="0.18" />
+</svg>

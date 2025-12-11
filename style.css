@@ -1,28 +1,42 @@
-/* --- Global Styles and Reset --- */
+/* --- CSS Variables & Root Styles --- */
 :root {
-    --primary-green: #38c172; /* Bright green color for accents */
-    --dark-background: #111;
+    --primary-green: #38c172; /* Bright green for accents */
+    --dark-background: #0d0d0d; /* Very dark background */
     --text-color: #fff;
     --gray-text: #ccc;
     --nav-height: 60px;
+    --transition-speed: 0.3s;
 }
 
+/* --- Global Reset and Typography --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--dark-background);
     color: var(--text-color);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
 }
 
 /* --- Header / Navigation Bar --- */
 .navbar {
-    position: fixed; /* Stays at the top */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -31,30 +45,33 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 10;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Dark, slightly transparent background for the header */
+    background-color: rgba(0, 0, 0, 0.75); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2em;
+    font-weight: 900;
+    font-size: 1.4em;
     letter-spacing: 1px;
+    color: var(--text-color);
 }
 
-.navbar nav ul {
+.nav-links ul {
     list-style: none;
     display: flex;
 }
 
-.navbar nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
+.nav-links ul li a {
+    color: var(--gray-text);
+    text-transform: uppercase;
+    font-size: 0.9em;
     padding: 10px 15px;
-    transition: color 0.3s;
+    transition: color var(--transition-speed);
 }
 
-.navbar nav ul li a:hover {
+.nav-links ul li a:hover {
     color: var(--primary-green);
 }
 
@@ -66,8 +83,9 @@ body {
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    font-weight: 700;
+    font-size: 0.9em;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
     display: flex;
     align-items: center;
 }
@@ -79,88 +97,105 @@ body {
 
 .join-discord-btn:hover {
     background-color: #31a660;
+    transform: translateY(-2px);
 }
 
-
-/* --- Hero Section --- */
+/* --- Hero Section - Background & Layout --- */
 .hero-section {
-    /* Full viewport height, minus the nav bar */
-    height: calc(100vh - 0px); 
+    /* Takes up the remaining viewport height */
+    flex-grow: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: var(--nav-height);
     
-    /* Background setup (Crucial for the design!) */
+    /* Background Image setup */
     background: 
-        /* 1. Semi-transparent dark overlay for text readability */
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-        /* 2. Placeholder Image */
-        url('https://images.unsplash.com/photo-1549487770-34449830836c?fit=crop&w=1920&h=1080') 
+        /* Placeholder Image - replace the URL! */
+        url('https://images.unsplash.com/photo-1549487770-34449830836c?fit=crop&w=1920&h=1080&q=80') 
         center center / cover no-repeat;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* The content box */
+/* Dark overlay to make text pop */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient from dark-top to slightly less dark-bottom */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 1;
+}
+
 .hero-content {
+    position: relative;
+    z-index: 5;
     max-width: 900px;
     padding: 20px;
 }
 
+/* --- Hero Text Styling --- */
 .competition-tag {
     color: var(--gray-text);
     font-size: 1.1em;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* Main Title Styling */
 .title {
-    font-size: 5.5em; /* Large size for desktop */
+    font-size: 6.5em; /* Large desktop size */
     font-weight: 900;
-    margin-bottom: 20px;
-    letter-spacing: 3px;
+    margin-bottom: 30px;
     line-height: 1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* Specific colors for the title */
-.cross {
-    color: #444; /* Darker color for the first half */
+.title-cross {
+    color: #444; /* Darker color for the first part */
+    text-transform: uppercase;
 }
 
-.world {
-    color: var(--primary-green); /* Bright green for the second half */
+.title-world {
+    color: var(--primary-green); /* Bright green for the second part */
+    text-transform: uppercase;
 }
 
 .tagline {
-    font-size: 1.4em;
+    font-size: 1.5em;
     color: var(--gray-text);
-    margin-bottom: 40px;
-    font-weight: 300;
+    margin-bottom: 50px;
+    font-weight: 400;
 }
 
 /* --- Call-to-Action Buttons --- */
 .cta-buttons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    flex-wrap: wrap; /* Allows wrapping on very small screens */
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: opacity 0.3s;
+    text-transform: uppercase;
+    padding: 15px 35px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 1px;
+    transition: all var(--transition-speed);
 }
 
 .btn i {
     margin-right: 10px;
-}
-
-.btn:hover {
-    opacity: 0.9;
+    font-size: 1.1em;
 }
 
 /* Primary CTA (Green Fill) */
@@ -168,16 +203,96 @@ body {
     background-color: var(--primary-green);
     color: var(--dark-background);
     border: 2px solid var(--primary-green);
+    box-shadow: 0 4px 15px rgba(56, 193, 114, 0.4);
+}
+
+.primary-cta:hover {
+    background-color: #31a660;
+    border-color: #31a660;
+    transform: translateY(-2px);
 }
 
 /* Secondary CTA (Dark/Outline Style) */
 .secondary-cta {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent fill */
+    background-color: transparent;
     color: var(--text-color);
     border: 2px solid var(--text-color);
 }
 
 .secondary-cta:hover {
+    background-color: rgba(255, 255, 255, 0.1);
     border-color: var(--primary-green);
     color: var(--primary-green);
+}
+
+/* --- Footer --- */
+.site-footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: #555;
+    background-color: #000;
+    border-top: 1px solid #1a1a1a;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN (MOBILE OPTIMIZATION)
+   ======================================= */
+
+@media (max-width: 900px) {
+    /* Adjust navigation for smaller screens */
+    .navbar {
+        padding: 0 20px;
+    }
+    
+    .nav-links {
+        /* Hide traditional links on mobile, assuming we'd use a hamburger menu */
+        display: none; 
+    }
+
+    /* Keep the logo and Discord button visible */
+    .navbar .logo {
+        font-size: 1.2em;
+    }
+
+    .navbar .join-discord-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+    
+    /* Center the hero content correctly on mobile */
+    .hero-content {
+        max-width: 90%;
+    }
+
+    /* Reduce font sizes for mobile screens */
+    .title {
+        font-size: 3em; /* Smaller title */
+        margin-bottom: 15px;
+    }
+    
+    .competition-tag {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+
+    .tagline {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    /* Adjust CTA buttons for better mobile stacking */
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%; /* Full width buttons */
+        padding: 12px 20px;
+        font-size: 0.9em;
+        justify-content: center;
+        border-radius: 8px; /* Slightly less aggressive corner radius */
+    }
 }

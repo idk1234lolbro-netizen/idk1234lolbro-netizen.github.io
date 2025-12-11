@@ -1,115 +1,183 @@
+/* --- Global Styles and Reset --- */
+:root {
+    --primary-green: #38c172; /* Bright green color for accents */
+    --dark-background: #111;
+    --text-color: #fff;
+    --gray-text: #ccc;
+    --nav-height: 60px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: #090909;
-    color: #fff;
+    font-family: Arial, sans-serif;
+    background-color: var(--dark-background);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* NAVBAR */
+/* --- Header / Navigation Bar --- */
 .navbar {
+    position: fixed; /* Stays at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
     display: flex;
     justify-content: space-between;
-    padding: 15px 30px;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    align-items: center;
+    padding: 0 40px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: 700;
-    color: #0af;
+    font-weight: bold;
+    font-size: 1.2em;
+    letter-spacing: 1px;
 }
 
-.nav-links a {
-    margin-left: 20px;
-    color: #ccc;
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar nav ul li a {
+    color: var(--text-color);
     text-decoration: none;
-    font-size: 16px;
-    transition: 0.2s;
+    padding: 10px 15px;
+    transition: color 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links .active {
-    color: #0af;
+.navbar nav ul li a:hover {
+    color: var(--primary-green);
 }
 
-/* HERO SECTION */
-.hero {
-    height: 90vh;
-    background: radial-gradient(circle at top, #111, #000);
+/* Discord Button in Nav */
+.join-discord-btn {
+    background-color: var(--primary-green);
+    color: var(--dark-background);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
     display: flex;
     align-items: center;
+}
+
+.join-discord-btn i {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+.join-discord-btn:hover {
+    background-color: #31a660;
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    /* Full viewport height, minus the nav bar */
+    height: calc(100vh - 0px); 
+    display: flex;
     justify-content: center;
-    padding: 20px;
+    align-items: center;
     text-align: center;
+    
+    /* Background setup (Crucial for the design!) */
+    background: 
+        /* 1. Semi-transparent dark overlay for text readability */
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        /* 2. Placeholder Image */
+        url('https://images.unsplash.com/photo-1549487770-34449830836c?fit=crop&w=1920&h=1080') 
+        center center / cover no-repeat;
 }
 
+/* The content box */
 .hero-content {
-    animation: fadeIn 1.2s ease forwards;
+    max-width: 900px;
+    padding: 20px;
 }
 
-.hero h2 {
-    font-size: 44px;
-    line-height: 1.2;
-    font-weight: 700;
+.competition-tag {
+    color: var(--gray-text);
+    font-size: 1.1em;
+    margin-bottom: 15px;
 }
 
-.hero h2 span {
-    color: #0af;
+/* Main Title Styling */
+.title {
+    font-size: 5.5em; /* Large size for desktop */
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    line-height: 1;
 }
 
-.hero p {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #bbb;
+/* Specific colors for the title */
+.cross {
+    color: #444; /* Darker color for the first half */
+}
+
+.world {
+    color: var(--primary-green); /* Bright green for the second half */
+}
+
+.tagline {
+    font-size: 1.4em;
+    color: var(--gray-text);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* --- Call-to-Action Buttons --- */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 24px;
-    background: #0af;
-    color: #000;
-    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.2s;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: opacity 0.3s;
+}
+
+.btn i {
+    margin-right: 10px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
+    opacity: 0.9;
 }
 
-/* PAGE SECTIONS */
-.page {
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: auto;
+/* Primary CTA (Green Fill) */
+.primary-cta {
+    background-color: var(--primary-green);
+    color: var(--dark-background);
+    border: 2px solid var(--primary-green);
 }
 
-.page h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #0af;
+/* Secondary CTA (Dark/Outline Style) */
+.secondary-cta {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent fill */
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
 }
 
-/* SMOOTH ANIMATION */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.secondary-cta:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
 }
-
-/* MOBILE */
-@media(max-width: 600px) {
-    .hero h2 { font-size: 31px; }
-    .nav-links a { margin-left: 10px; font-size: 14px; }
-    }

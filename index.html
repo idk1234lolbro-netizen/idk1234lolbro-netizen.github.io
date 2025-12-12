@@ -12,6 +12,7 @@
       font-family: 'Arial', sans-serif;
       background: #0a0a0a;
       color: #f5f5f5;
+      overflow-x: hidden;
     }
     a { text-decoration: none; }
 
@@ -24,14 +25,12 @@
       background: #111;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10000;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+    .logo { font-size: 1.5rem; font-weight: bold; }
     .logo-cross { color: #4ade80; }
     .logo-world { color: #f5f5f5; }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -49,50 +48,53 @@
       border-bottom: 2px solid #00d4ff;
     }
 
-    /* Hamburger for mobile */
-    .hamburger {
+    /* Mobile Menu */
+    .menu-toggle {
       display: none;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      z-index: 1100;
     }
-    .hamburger div {
+    .menu-toggle span {
       width: 25px;
       height: 3px;
       background: #f5f5f5;
+      border-radius: 2px;
+      transition: 0.3s;
     }
-
-    /* Mobile menu & overlay */
-    .overlay {
-      display: none;
-      position: fixed;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.6);
-      z-index: 1040;
-      transition: opacity 0.3s ease;
-    }
-    .overlay.show { display: block; }
-    .mobile-menu {
+    .mobile-nav {
       position: fixed;
       top: 0;
-      right: -250px;
+      left: -250px;
       width: 250px;
       height: 100%;
       background: #111;
+      padding: 3rem 1rem;
       display: flex;
       flex-direction: column;
-      padding: 3rem 1.5rem;
       gap: 1.5rem;
-      transition: right 0.3s ease-in-out;
-      z-index: 1050;
+      transition: 0.5s ease;
+      z-index: 9999;
     }
-    .mobile-menu.show { right: 0; }
-    .mobile-menu a {
+    .mobile-nav a {
       color: #f5f5f5;
       font-size: 1.2rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: 0.3s;
     }
-    .mobile-menu a.active { color: #00d4ff; }
+    .mobile-nav a.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+      z-index:9998;
+    }
 
     /* Hero Section */
     .hero {
@@ -113,36 +115,26 @@
       z-index: 1;
     }
     .hero * { position: relative; z-index: 2; }
-
     .location-box {
       display: inline-block;
       padding: 0.3rem 0.8rem;
       background: rgba(34,34,34,0.5);
       color: #f5f5f5;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 1rem;
       margin-bottom: 1rem;
       border: 1px solid #4ade80;
+      box-shadow: 0 0 10px rgba(0,255,106,0.5);
+      animation: glow 1.5s infinite alternate;
     }
-
-    .hero h1 {
-      font-size: 4rem;
-      margin: 0.5rem 0;
-      color: #f5f5f5;
-      text-shadow: 0 0 15px rgba(0,255,106,0.7);
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(0,255,106,0.5); }
+      to { box-shadow: 0 0 20px rgba(0,255,106,0.8); }
     }
+    .hero h1 { font-size: 4rem; margin: 0.5rem 0; color: #f5f5f5; text-shadow: 0 0 15px rgba(0,255,106,0.7); }
     .hero h1 .logo-cross { color: #4ade80; }
     .hero h1 .logo-world { color: #f5f5f5; }
-
-    .hero p#typing {
-      font-size: 1.5rem;
-      margin: 0.5rem 0;
-      line-height: 1.6;
-      color: #ccc;
-      white-space: pre-line;
-      min-height: 4rem;
-    }
-
+    .hero p#typing { font-size: 1.5rem; margin: 0.5rem 0; line-height: 1.6; color: #ccc; white-space: pre-line; min-height: 4rem; }
     .hero button {
       padding: 0.8rem 1.5rem;
       margin: 0.5rem;
@@ -153,8 +145,8 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    .hero button.primary { background: #4ade80; color: #0a0a0a; }
-    .hero button.secondary { background: #00d4ff; color: #0a0a0a; }
+    .hero button.primary { background: #4ade80; color: #0a0a0a; box-shadow: 0 0 5px rgba(0,255,106,0.6); }
+    .hero button.secondary { background: #00d4ff; color: #0a0a0a; box-shadow: 0 0 5px rgba(0,212,255,0.6); }
     .hero button:hover { filter: brightness(1.2); }
 
     footer {
@@ -167,7 +159,7 @@
 
     @media(max-width:768px){
       nav ul { display: none; }
-      .hamburger { display: flex; }
+      .menu-toggle { display: flex; }
       .hero h1 { font-size: 3rem; }
       .hero p#typing { font-size: 1.2rem; }
     }
@@ -179,6 +171,9 @@
     <div class="logo">
       <span class="logo-cross">CROSS</span><span class="logo-world">WORLD LEAGUE</span>
     </div>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -189,22 +184,16 @@
         <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
       </ul>
     </nav>
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
   </header>
 
   <div class="overlay" id="overlay"></div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="staff.html">Staff</a>
-    <a href="teams.html">Teams</a>
-    <a href="contact.html">Contact</a>
-    <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="show">Home</a>
+    <a href="about.html" class="show">About</a>
+    <a href="staff.html" class="show">Staff</a>
+    <a href="teams.html" class="show">Teams</a>
+    <a href="contact.html" class="show">Contact</a>
+    <a href="https://discord.gg/yourserver" target="_blank" class="show">Join Discord</a>
   </div>
 
   <section class="hero">
@@ -228,27 +217,31 @@
     let i = 0;
     function typeWriter() {
       if (i < text.length) {
-        if (text[i] === '\n') typingElement.innerHTML += '<br>';
-        else typingElement.innerHTML += text[i];
+        typingElement.innerHTML += text[i] === '\n' ? '<br>' : text[i];
         i++;
         setTimeout(typeWriter, 50);
       }
     }
     typeWriter();
 
-    // Mobile menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
     const overlay = document.getElementById('overlay');
-
-    function toggleMenu() {
-      mobileMenu.classList.toggle('show');
-      overlay.classList.toggle('show');
-    }
-
-    hamburger.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('click', () => {
+      mobileNav.style.left = '0';
+      overlay.style.display = 'block';
+      const links = mobileNav.querySelectorAll('a');
+      links.forEach((link, idx) => {
+        setTimeout(() => { link.classList.add('show'); }, idx * 100);
+      });
+    });
+    overlay.addEventListener('click', () => {
+      mobileNav.style.left = '-250px';
+      overlay.style.display = 'none';
+      const links = mobileNav.querySelectorAll('a');
+      links.forEach(link => link.classList.remove('show'));
+    });
   </script>
-
 </body>
 </html>

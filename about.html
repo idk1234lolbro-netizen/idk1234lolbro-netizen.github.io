@@ -1,33 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - CROSSWORLD LEAGUE</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-
+  <link rel="stylesheet" href="assets/css/style.css">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background: #0a0a0a;
       color: #f5f5f5;
     }
 
-    /* PAGE BADGE */
+    a { text-decoration: none; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .logo-cross { color: #4ade80; } /* green */
+    .logo-world { color: #f5f5f5; } /* white */
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: #f5f5f5;
+      padding: 0.2rem 0.5rem;
+      transition: 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: #00d4ff;
+      border-bottom: 2px solid #00d4ff;
+    }
+
+    /* Top badge */
     .page-badge {
       max-width: 900px;
-      margin: 110px auto 1rem auto;
+      margin: 3rem auto 1rem auto;
       padding: 0.5rem 1rem;
-      background: rgba(34, 34, 34, 0.5);
+      background: rgba(34,34,34,0.5);
       border-radius: 5px;
       border: 1px solid #4ade80;
       text-align: center;
       font-size: 1rem;
-      backdrop-filter: blur(4px);
     }
 
-    /* PAGE TITLE */
+    /* Page title */
     .page-title {
       text-align: center;
       font-size: 2.8rem;
@@ -35,7 +71,7 @@
       color: #f5f5f5;
     }
 
-    /* MAIN TEXT */
+    /* Page text */
     .page-text {
       max-width: 900px;
       margin: auto;
@@ -45,7 +81,7 @@
       color: #ccc;
     }
 
-    /* FEATURES */
+    /* Feature boxes */
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -56,33 +92,35 @@
     }
 
     .feature-box {
-      background: rgba(34, 34, 34, 0.5);
+      background: rgba(34,34,34,0.5);
       border: 1px solid #4ade80;
       border-radius: 10px;
       padding: 1.5rem;
       text-align: center;
       width: 250px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
+      transition: 0.3s;
     }
 
     .feature-box:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 0 20px #4ade80;
+      transform: translateY(-5px);
+      border-color: #00ff6a;
     }
 
-    .feature-box:hover svg {
-      transform: scale(1.2);
-    }
-
-    .feature-box svg {
+    .feature-box .icon svg {
       width: 48px;
       height: 48px;
-      fill: #4ade80;
       margin-bottom: 1rem;
-      transition: 0.3s;
+      fill: #4ade80;
+    }
+
+    .feature-box h3 {
+      margin-bottom: 0.5rem;
+      color: #f5f5f5;
+    }
+
+    .feature-box p {
+      color: #ccc;
+      font-size: 1rem;
     }
 
     footer {
@@ -91,114 +129,105 @@
       background: #111;
       font-size: 0.9rem;
       color: #888;
-      margin-top: 3rem;
+    }
+
+    @media(max-width:768px){
+      nav ul{flex-direction:column; gap:0.5rem;}
+      .page-title{font-size:2rem;}
+      .feature-box{width:100%;}
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ✔ SAME NAV + HAMBURGER MENU AS HOME PAGE -->
-  <header class="header">
+  <header>
     <div class="logo">
       <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
     </div>
-
-    <!-- HAMBURGER BUTTON (same as home) -->
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-
-    <!-- NAV MENU -->
-    <nav class="nav-links" id="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="staff.html">Staff</a>
-      <a href="teams.html">Teams</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
+      </ul>
     </nav>
-
-    <!-- Background overlay -->
-    <div id="overlay"></div>
   </header>
 
-  <!-- PAGE CONTENT -->
   <div class="page-badge">📍 About</div>
   <h1 class="page-title">About CrossWorld League</h1>
 
   <div class="page-text">
-    CrossWorld League is one of the most modern and future-ready leagues out there.  
-    We run with our custom bot and website to keep everything smooth for players.
+    CrossWorld League is one of the most modern and future-ready leagues out there. We run with our own custom bot and website to make everything smooth, organized, and easy for players.
 
-    <br /><br />
-    <strong>Our Mission:</strong><br />
-    Build a long-term league that doesn't shut down randomly.  
-    We're here to create something stable, fun, and competitive for everyone.
+    <br><br>
+    <strong>Our Mission:</strong><br>
+    We aim to be a long-term, stable league that actually lasts and doesn't randomly shut down. Too many leagues come and go — we're here to build something players can rely on for years.
   </div>
 
   <h2 style="text-align:center; margin-top:3rem;">What Sets Us Apart</h2>
 
   <div class="features">
-
     <div class="feature-box">
-      <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
+      <div class="icon">
+        <!-- Robot SVG -->
+        <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
+      </div>
       <h3>Custom Bot</h3>
       <p>Handles everything from match scheduling to stat tracking.</p>
     </div>
 
     <div class="feature-box">
-      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16z"/></svg>
+      <div class="icon">
+        <!-- Website SVG -->
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16z"/></svg>
+      </div>
       <h3>Custom Website</h3>
-      <p>Simple, fast and easy to use.</p>
+      <p>Easy access to all league information.</p>
     </div>
 
     <div class="feature-box">
-      <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9-7 1z"/></svg>
+      <div class="icon">
+        <!-- Rocket SVG -->
+        <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9-7 1z"/></svg>
+      </div>
       <h3>Future-Ready</h3>
       <p>Built for Soccer Zero and beyond.</p>
     </div>
 
     <div class="feature-box">
-      <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 6h18v2H3V9zm0 6h12v2H3v-2z"/></svg>
+      <div class="icon">
+        <!-- Organized Structure SVG -->
+        <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 6h18v2H3V9zm0 6h12v2H3v-2z"/></svg>
+      </div>
       <h3>Organized Structure</h3>
       <p>Clear staff hierarchy.</p>
     </div>
 
-  </div>
-
-  <h2 style="text-align:center; margin-top:3rem;">Who Made This?</h2>
-
-  <div class="features">
     <div class="feature-box">
-      <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z"/></svg>
-      <h3>Hammerofthor & Chairman Meow</h3>
-      <p>Our members built this League.</p>
+      <div class="icon">
+        <!-- Shield SVG -->
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z"/></svg>
+      </div>
+      <h3>Long-Term Stability</h3>
+      <p>CWL is here to stay.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="icon">
+        <!-- Lightning SVG -->
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
+      </div>
+      <h3>Modern Approach</h3>
+      <p>Latest tools & technologies.</p>
     </div>
   </div>
 
   <footer>
-    © 2025 CrossWorld League | Site by Meow
+    © 2025 CrossWorld League | Site by idk1234lolbro-netizen
   </footer>
-
-  <!-- SAME JS AS HOME PAGE -->
-  <script>
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
-    const overlay = document.getElementById("overlay");
-
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("open");
-      navLinks.classList.toggle("show");
-      overlay.classList.toggle("active");
-    });
-
-    overlay.addEventListener("click", () => {
-      hamburger.classList.remove("open");
-      navLinks.classList.remove("show");
-      overlay.classList.remove("active");
-    });
-  </script>
 
 </body>
 </html>

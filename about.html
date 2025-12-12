@@ -6,31 +6,111 @@
   <title>About - CROSSWORLD LEAGUE</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    body { margin:0; font-family:'Arial',sans-serif; background:#0a0a0a; color:#f5f5f5; }
-    a { color:#4ade80; text-decoration:none; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#111; position:sticky; top:0; z-index:1000; }
-    .logo { font-size:1.5rem; font-weight:bold; color:#4ade80; }
-    nav ul { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
-    nav ul li { display:inline; }
-    section { padding:4rem 2rem; max-width:1000px; margin:auto; }
-    h1, h2 { color:#4ade80; }
-    h1 { font-size:3rem; margin-bottom:1rem; }
-    h2 { font-size:2rem; margin-bottom:1rem; }
-    p { font-size:1.2rem; line-height:1.6; margin-bottom:1rem; }
-    ul li { margin-bottom:0.5rem; }
-    button { padding:0.8rem 1.5rem; margin-top:1rem; font-size:1rem; border:none; border-radius:5px; cursor:pointer; background:#4ade80; color:#0a0a0a; font-weight:bold; transition:0.3s; }
-    button:hover { background:#00ff6a; }
-    footer { text-align:center; padding:2rem; background:#111; font-size:0.9rem; color:#888; }
-    @media(max-width:768px){ nav ul{flex-direction:column; gap:0.5rem;} h1{font-size:2.5rem;} h2{font-size:1.5rem;} p{font-size:1rem;} }
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+    }
+
+    a { text-decoration: none; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .logo-cross { color: #4ade80; } /* green */
+    .logo-world { color: #f5f5f5; } /* white */
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: #f5f5f5;
+      padding: 0.2rem 0.5rem;
+      transition: 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: #00d4ff;
+      border-bottom: 2px solid #00d4ff;
+    }
+
+    /* Hero Box */
+    .hero-box {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(34,34,34,0.5);
+      border-radius: 10px;
+      border: 1px solid #4ade80;
+      text-align: center;
+    }
+
+    .hero-box h1 {
+      margin: 0.5rem 0 1rem 0;
+      font-size: 3rem;
+      color: #f5f5f5;
+    }
+
+    .hero-box p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ccc;
+      white-space: pre-line;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      color: #4ade80;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media(max-width:768px){
+      nav ul{flex-direction:column; gap:0.5rem;}
+      .hero-box h1{font-size:2.2rem;}
+      .hero-box p{font-size:1rem;}
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">CROSSWORLD</div>
+    <div class="logo">
+      <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html" class="active">About</a></li>
         <li><a href="staff.html">Staff</a></li>
         <li><a href="teams.html">Teams</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -39,25 +119,28 @@
     </nav>
   </header>
 
-  <section>
+  <section class="hero-box">
+    <div class="location-box" style="margin-bottom:1rem;">📍 About</div>
     <h1>About CrossWorld League</h1>
-    <p>CrossWorld League is one of the most modern and future-ready leagues out there. We run with our own custom bot and website to make things smooth, organized, and easy for players.</p>
-    <h2>Our Mission</h2>
-    <p>We aim to be a long-term, stable league that actually lasts and doesn't randomly shut down. Too many leagues come and go — we're here to build something players can rely on for years to come.</p>
-    <h2>What Sets Us Apart</h2>
-    <ul>
-      <li>Custom Bot: Handles match scheduling and stats seamlessly.</li>
-      <li>Custom Website: Easy access to all league info.</li>
-      <li>Future-Ready: Prepared for Soccer Zero.</li>
-      <li>Organized Structure: Clear staff hierarchy.</li>
-      <li>Long-Term Stability: CWL is here to stay.</li>
-      <li>Modern Approach: Latest tools & technologies.</li>
-    </ul>
-    <button onclick="window.location.href='index.html'">Back Home</button>
+    <p>
+CrossWorld League is one of the most modern and future-ready leagues out there. We run with our own custom bot and website to make everything smooth, organized, and easy for players.
+
+Our Mission:
+We aim to be a long-term, stable league that actually lasts and doesn't randomly shut down. Too many leagues come and go — we're here to build something players can rely on for years.
+
+What Sets Us Apart:
+- Custom Bot: Handles everything from match scheduling to stat tracking.
+- Custom Website: Easy access to all league information.
+- Future-Ready: Built for Soccer Zero and beyond.
+- Organized Structure: Clear staff hierarchy.
+- Long-Term Stability: CWL is here to stay.
+- Modern Approach: Latest tools & technologies.
+    </p>
   </section>
 
   <footer>
     © 2025 CrossWorld League | Site by idk1234lolbro-netizen
   </footer>
+
 </body>
 </html>

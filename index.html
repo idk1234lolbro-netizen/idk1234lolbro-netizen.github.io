@@ -32,8 +32,8 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
-    .logo-cross { color: #4ade80; } /* green */
-    .logo-world { color: #f5f5f5; } /* white */
+    .logo-cross { color: #4ade80; }
+    .logo-world { color: #f5f5f5; }
 
     nav ul {
       list-style: none;
@@ -48,16 +48,48 @@
       transition: 0.3s;
     }
     nav ul li a:hover, nav ul li a.active {
-      color: #00d4ff; /* accent color on hover/active */
+      color: #00d4ff;
       border-bottom: 2px solid #00d4ff;
     }
 
-    /* Mobile Menu Icon */
-    #menu-icon {
+    /* Hamburger for mobile */
+    .hamburger {
       display: none;
-      font-size: 2rem;
+      flex-direction: column;
+      gap: 5px;
       cursor: pointer;
+      z-index: 1100;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #f5f5f5;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 1.5rem;
+      gap: 1.5rem;
+      transition: right 0.3s ease-in-out;
+      z-index: 1050;
+    }
+    .mobile-menu.show {
+      right: 0;
+    }
+    .mobile-menu a {
       color: #f5f5f5;
+      font-size: 1.2rem;
+    }
+    .mobile-menu a.active {
+      color: #00d4ff;
     }
 
     /* Hero Section */
@@ -72,7 +104,6 @@
       text-align: center;
     }
 
-    /* Dark overlay */
     .hero::before {
       content: "";
       position: absolute;
@@ -100,7 +131,6 @@
       color: #f5f5f5;
       text-shadow: 0 0 15px rgba(0,255,106,0.7);
     }
-
     .hero h1 .logo-cross { color: #4ade80; }
     .hero h1 .logo-world { color: #f5f5f5; }
 
@@ -135,53 +165,12 @@
       color: #888;
     }
 
-    /* Mobile Styles */
     @media(max-width:768px){
       nav ul { display: none; }
-      #menu-icon { display: block; }
-
-      /* Mobile nav */
-      #mobile-nav {
-        display: none;
-        background: rgba(17,17,17,0.95);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding-top: 5rem;
-        z-index: 999;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      #mobile-nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
-      }
-
-      #mobile-nav li a {
-        color: #f5f5f5;
-        display: block;
-        font-size: 1.5rem;
-        padding: 0.5rem 1rem;
-      }
-
-      #mobile-nav li a.active { 
-        background: #4ade80; 
-        color: #0a0a0a; 
-        border-radius: 5px; 
-      }
-
+      .hamburger { display: flex; }
       .hero h1 { font-size: 3rem; }
       .hero p#typing { font-size: 1.2rem; }
     }
-
   </style>
 </head>
 <body>
@@ -190,9 +179,6 @@
     <div class="logo">
       <span class="logo-cross">CROSS</span><span class="logo-world">WORLD LEAGUE</span>
     </div>
-
-    <div id="menu-icon" onclick="toggleMenu()">☰</div>
-
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -203,19 +189,21 @@
         <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
       </ul>
     </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-nav">
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="staff.html">Staff</a></li>
-        <li><a href="teams.html">Teams</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
-      </ul>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="staff.html">Staff</a>
+    <a href="teams.html">Teams</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
+  </div>
 
   <section class="hero">
     <div class="location-box">📍 Soccer Zero Competition</div>
@@ -238,11 +226,8 @@
     let i = 0;
     function typeWriter() {
       if (i < text.length) {
-        if (text[i] === '\n') {
-          typingElement.innerHTML += '<br>';
-        } else {
-          typingElement.innerHTML += text[i];
-        }
+        if (text[i] === '\n') typingElement.innerHTML += '<br>';
+        else typingElement.innerHTML += text[i];
         i++;
         setTimeout(typeWriter, 50);
       }
@@ -250,14 +235,12 @@
     typeWriter();
 
     // Mobile menu toggle
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-nav');
-      if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-      } else {
-        menu.style.display = 'flex';
-      }
-    }
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
   </script>
+
 </body>
 </html>

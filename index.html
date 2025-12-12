@@ -6,143 +6,64 @@
   <title>CROSSWORLD LEAGUE</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* Base Styles */
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #0a0a0a;
-      color: #f5f5f5;
-    }
-
-    a { text-decoration: none; }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #111;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .logo-cross { color: #4ade80; } /* green */
-    .logo-world { color: #f5f5f5; } /* white */
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li a {
-      color: #f5f5f5;
-      padding: 0.2rem 0.5rem;
-      transition: 0.3s;
-    }
-    nav ul li a:hover, nav ul li a.active {
-      color: #00d4ff; /* accent color on hover/active */
-      border-bottom: 2px solid #00d4ff;
-    }
-
-    /* Hero Section */
+    /* General styles */
+    body { margin:0; font-family:'Arial', sans-serif; background:#0a0a0a; color:#f5f5f5; }
+    a { text-decoration:none; color:#f5f5f5; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#111; position:sticky; top:0; z-index:1000; }
+    .logo { font-size:1.5rem; font-weight:bold; }
+    .logo .cross { color:#4ade80; } /* green Cross */
+    .logo .world { color:#000; background:#4ade80; padding:0 0.2rem; } /* black World on green background */
+    
+    nav ul { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
+    nav ul li { display:inline; }
+    
+    /* Hero section */
     .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: url('assets/img/background/background.png') center/cover no-repeat;
-      position: relative;
-      text-align: center;
+      height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      background:url('assets/img/background.png') center/cover no-repeat;
+      text-align:center;
+      position:relative;
     }
-
-    /* Dark overlay */
-    .hero::before {
-      content: "";
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
+    .page-badge {
+      background: rgba(255,255,255,0.1);
+      padding:0.4rem 0.8rem;
+      border-radius:5px;
+      margin-bottom:1rem;
+      font-weight:bold;
+      font-size:1rem;
     }
+    .hero h1 { font-size:4rem; margin:0; color:#4ade80; text-shadow:0 0 15px #00ff6a; }
+    .hero p#typing { font-size:1.5rem; margin:1rem 0; min-height:2rem; }
+    .hero button { padding:0.8rem 1.5rem; margin:0.5rem; font-size:1rem; border:none; border-radius:5px; cursor:pointer; background:#4ade80; color:#0a0a0a; font-weight:bold; transition:0.3s; }
+    .hero button:hover { background:#00ff6a; }
 
-    .hero * { position: relative; z-index: 2; }
+    footer { text-align:center; padding:2rem; background:#111; font-size:0.9rem; color:#888; }
 
-    .location-box {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: rgba(34,34,34,0.5);
-      color: #f5f5f5;
-      border-radius: 5px;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #4ade80;
-    }
+    /* Hamburger menu */
+    .hamburger { display:none; cursor:pointer; font-size:1.8rem; color:#4ade80; }
+    #mobile-nav { display:none; background:#111; position:absolute; top:60px; width:100%; }
+    #mobile-nav ul { flex-direction: column; padding:1rem; list-style:none; margin:0; }
+    #mobile-nav li { margin-bottom:0.5rem; }
+    #mobile-nav li.active a { background:#4ade80; color:#0a0a0a; padding:0.3rem 0.6rem; border-radius:5px; }
 
-    .hero h1 {
-      font-size: 4rem;
-      margin: 0.5rem 0;
-      color: #f5f5f5;
-      text-shadow: 0 0 15px rgba(0,255,106,0.7);
-    }
-
-    .hero h1 .logo-cross { color: #4ade80; }
-    .hero h1 .logo-world { color: #f5f5f5; }
-
-    .hero p#typing {
-      font-size: 1.5rem;
-      margin: 0.5rem 0;
-      line-height: 1.6;
-      color: #ccc;
-      white-space: pre-line;
-      min-height: 4rem; /* prevent layout shift while typing */
-    }
-
-    .hero button {
-      padding: 0.8rem 1.5rem;
-      margin: 0.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .hero button.primary { background: #4ade80; color: #0a0a0a; }
-    .hero button.secondary { background: #00d4ff; color: #0a0a0a; }
-    .hero button:hover { filter: brightness(1.2); }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #111;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
+    /* Responsive */
     @media(max-width:768px){
-      nav ul { flex-direction: column; gap: 0.5rem; }
-      .hero h1 { font-size: 3rem; }
-      .hero p#typing { font-size: 1.2rem; }
+      nav ul { display:none; }
+      .hamburger { display:block; }
+      .hero h1 { font-size:2.5rem; }
+      .hero p#typing { font-size:1rem; }
+      .hero button { font-size:0.9rem; padding:0.6rem 1rem; }
+      .page-badge { font-size:0.9rem; padding:0.3rem 0.6rem; }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="logo">
-      <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
-    </div>
+    <div class="logo"><span class="cross">CROSS</span><span class="world">WORLD</span></div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li class="active"><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="staff.html">Staff</a></li>
         <li><a href="teams.html">Teams</a></li>
@@ -152,38 +73,49 @@
     </nav>
   </header>
 
+  <nav id="mobile-nav">
+    <ul>
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="teams.html">Teams</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
+    </ul>
+  </nav>
+
   <section class="hero">
-    <div class="location-box">📍 Soccer Zero Competition</div>
-    <h1><span class="logo-cross">CROSS</span><span class="logo-world">WORLD LEAGUE</span></h1>
+    <div class="page-badge">📍 Home</div>
+    <h1>CROSSWORLD LEAGUE</h1>
     <p id="typing"></p>
     <div>
-      <button class="primary" onclick="window.location.href='about.html'">Explore League ></button>
-      <button class="secondary" onclick="window.open('https://discord.gg/yourserver')">Join Our Discord</button>
+      <button onclick="window.location.href='about.html'">Explore League ></button>
+      <button onclick="window.open('https://discord.gg/yourserver')">Join Our Discord</button>
     </div>
   </section>
 
   <footer>
-    © 2025 CrossWorld League | Site by Meow
+    © 2025 CrossWorld League | Site by idk1234lolbro-netizen
   </footer>
 
   <script>
-    const text = `The future of Soccer Zero competition.\nModern. Organized. Built to last.`;
-    const typingElement = document.getElementById('typing');
-    let i = 0;
-
-    function typeWriter() {
-      if (i < text.length) {
-        if (text[i] === '\n') {
-          typingElement.innerHTML += '<br>';
-        } else {
-          typingElement.innerHTML += text[i];
-        }
-        i++;
-        setTimeout(typeWriter, 50);
-      }
+    // Hamburger toggle
+    function toggleMenu(){
+      const menu = document.getElementById('mobile-nav');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
-    typeWriter();
+    // Typing effect for tagline
+    const text = "The future of Soccer Zero competition. Modern. Organized. Built to last.";
+    let i = 0;
+    function typeText(){
+      if(i < text.length){
+        document.getElementById('typing').innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeText, 50);
+      }
+    }
+    window.onload = typeText;
   </script>
 </body>
 </html>

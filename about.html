@@ -62,38 +62,35 @@
     .menu-toggle {
       display: none;
       flex-direction: column;
-      gap: 4px;   /* smaller gap */
+      gap: 5px;
       cursor: pointer;
     }
 
-    .menu-toggle div {
-      width: 22px;   /* smaller width */
-      height: 2.5px; /* thinner lines */
-      background: #fff;
-      border-radius: 2px; /* slightly rounded */
-    }
+    .menu-toggle div { width: 26px; height: 3px; background: #fff; }
 
+    /* SIDE PANEL MOBILE MENU */
     .mobile-menu {
       position: fixed;
       top: 0;
-      right: -100%;
-      width: 100%;
+      right: -300px; /* start off-screen */
+      width: 250px;  /* panel width */
       height: 100%;
-      background: rgba(15, 15, 15, 0.96);
-      padding: 3rem 2rem;
+      background: rgba(15, 15, 15, 0.98);
+      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      transition: 0.45s ease;
+      gap: 1.8rem;
+      transition: right 0.35s ease;
       z-index: 2000;
       overflow-y: auto;
+      border-left: 1px solid rgba(255,255,255,0.08);
     }
 
     .mobile-menu a {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       opacity: 0;
-      transform: translateY(20px);
-      transition: 0.35s ease;
+      transform: translateX(20px);
+      transition: all 0.35s ease;
     }
 
     .mobile-menu a.active { color: #00d4ff; font-weight: bold; }
@@ -203,7 +200,7 @@
       nav ul { display: none; }
       .menu-toggle { display: flex; }
       .page-title { font-size: 2rem; }
-      .feature-box { width: 100%; transform: translateX(0) !important; } /* reset translate for mobile */
+      .feature-box { width: 100%; transform: translateX(0) !important; }
     }
   </style>
 </head>
@@ -258,9 +255,7 @@
   can rely on for years.
 </div>
 
-<h2 style="text-align:center; margin-top:3.5rem;">
-  What Sets Us Apart
-</h2>
+<h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
 
 <div class="features">
 
@@ -302,9 +297,7 @@
 
 </div>
 
-<h2 style="text-align:center; margin-top:3.5rem;">
-  Who Built CrossWorld League?
-</h2>
+<h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
 
 <div class="features">
 
@@ -333,37 +326,38 @@
 </footer>
 
 <script>
-  // Mobile menu
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const links = mobileMenu.querySelectorAll("a");
 
+  // Toggle panel
   menuToggle.addEventListener("click", () => {
     if (mobileMenu.style.right === "0px") {
-      mobileMenu.style.right = "-100%";
-      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateY(20px)"; });
+      mobileMenu.style.right = "-300px";
+      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
     } else {
       mobileMenu.style.right = "0";
       links.forEach((link, i) => {
-        setTimeout(() => { link.style.opacity = 1; link.style.transform = "translateY(0)"; }, i * 90);
+        setTimeout(() => { link.style.opacity = 1; link.style.transform = "translateX(0)"; }, i * 90);
       });
     }
   });
 
+  // Close panel if click outside
   document.addEventListener("click", e => {
     if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-      mobileMenu.style.right = "-100%";
-      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateY(20px)"; });
+      mobileMenu.style.right = "-300px";
+      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
     }
   });
 
-  // Feature boxes animation
+  // Feature boxes animation PC
   window.addEventListener('DOMContentLoaded', () => {
     const boxes = document.querySelectorAll('.feature-box');
     boxes.forEach((box, index) => {
       setTimeout(() => {
         box.classList.add('visible');
-      }, index * 300); // slower, one by one on PC
+      }, index * 300);
     });
   });
 
@@ -383,4 +377,4 @@
 </script>
 
 </body>
-</html>
+  </html>

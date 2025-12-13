@@ -136,7 +136,7 @@
       transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
-    /* Desktop left/right effect on hover (keep as is) */
+    /* Desktop hover effect */
     .feature-box:hover { transform: scale(1.06); }
 
     .feature-box::before {
@@ -185,7 +185,7 @@
       nav ul { display: none; }
       .menu-toggle { display: flex; }
       .page-title { font-size: 2rem; }
-      .feature-box { width: 100%; opacity: 0; transform: translateY(50px); } /* scroll animation start */
+      .feature-box { width: 100%; opacity: 0; transform: translateY(50px); }
       .feature-box.visible { opacity: 1; transform: translateY(0); transition: transform 0.5s ease, opacity 0.5s ease; }
     }
   </style>
@@ -290,7 +290,7 @@
 </footer>
 
 <script>
-  // Mobile menu
+  // Mobile menu toggle
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const links = mobileMenu.querySelectorAll("a");
@@ -313,19 +313,17 @@
     }
   });
 
-  // Scroll animation for mobile only
+  // Mobile scroll animation
   if(window.innerWidth <= 768){
     const boxes = document.querySelectorAll('.feature-box');
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
-          entry.target.classList.add('visible');
+          setTimeout(() => { entry.target.classList.add('visible'); }, Array.from(boxes).indexOf(entry.target) * 150);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
-
     boxes.forEach(box => observer.observe(box));
   }
 </script>

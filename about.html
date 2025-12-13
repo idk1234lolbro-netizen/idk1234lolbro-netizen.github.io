@@ -171,7 +171,7 @@ nav ul li a:hover, nav ul li a.active {
 .roadmap::before {
   content: "";
   position: absolute;
-  left: 5px; /* vertical line position */
+  left: 5px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -189,22 +189,25 @@ nav ul li a:hover, nav ul li a.active {
   transform: rotate(45deg);
   margin-right: 15px;
   position: relative;
-  left: -4px; /* shift rhombus slightly inside line */
+  left: -4px;
   z-index: 1;
-  border: 1px solid rgba(255,255,255,0.08);
 }
+
+/* Roadmap colors for states */
 .roadmap-item.completed .rhombus {
-  background: #4ade80;
+  background: #4ade80; /* full color */
 }
 .roadmap-item.current .rhombus {
-  background: linear-gradient(to right, rgba(255,255,255,0.1) 50%, #4ade80 50%);
+  background: linear-gradient(to bottom, #4ade80 50%, rgba(255,255,255,0.1) 50%); /* half color */
 }
 .roadmap-item.upcoming .rhombus {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.1); /* no color / gray */
 }
-.roadmap-item div {
-  color: #ccc;
-  font-size: 0.95rem;
+
+.status-text {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-left: 6px;
 }
 
 /* ================= FOOTER ================= */
@@ -269,6 +272,40 @@ footer {
   can rely on for years.
 </div>
 
+<h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
+<div class="features">
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
+    <h3>Custom Bot</h3>
+    <p>Automated match scheduling & stats.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+    <h3>Custom Website</h3>
+    <p>Clean UI & live info.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
+    <h3>Future-Ready</h3>
+    <p>Built for Soccer Zero and beyond.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 6h18v2H3zm0 6h12v2H3z"/></svg>
+    <h3>Organized Structure</h3>
+    <p>Clear staff hierarchy.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5z"/></svg>
+    <h3>Long-Term Stability</h3>
+    <p>CWL is built to stay.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9z"/></svg>
+    <h3>Modern Tools</h3>
+    <p>Latest technologies & automation.</p>
+  </div>
+</div>
+
 <h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
 <div class="roadmap">
   <div class="roadmap-item completed">
@@ -277,15 +314,34 @@ footer {
   </div>
   <div class="roadmap-item current">
     <div class="rhombus"></div>
-    <div>Current: get staff members and be ready</div>
+    <div>Current: get staff members and be ready <span class="status-text">(In Progress)</span></div>
   </div>
   <div class="roadmap-item upcoming">
     <div class="rhombus"></div>
-    <div>After game release: make everything ready</div>
+    <div>After game release: make everything ready <span class="status-text">(Coming Soon)</span></div>
   </div>
   <div class="roadmap-item upcoming">
     <div class="rhombus"></div>
-    <div>Matches and stuff</div>
+    <div>Matches and stuff <span class="status-text">(Planned)</span></div>
+  </div>
+</div>
+
+<h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
+<div class="features">
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+    <h3>Owner</h3>
+    <p>hammerofthor</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    <h3>Chairman</h3>
+    <p>Meow</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+    <h3>Community</h3>
+    <p>Everyone in the league & supporters</p>
   </div>
 </div>
 
@@ -315,6 +371,28 @@ document.addEventListener("click", e => {
   if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
     mobileMenu.style.right = "-300px";
     links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
+  }
+});
+
+// Feature boxes animation PC
+window.addEventListener('DOMContentLoaded', () => {
+  const boxes = document.querySelectorAll('.feature-box');
+  boxes.forEach((box, index) => {
+    setTimeout(() => { box.classList.add('visible'); }, index * 300);
+  });
+});
+
+// Scroll animation for mobile only
+window.addEventListener('scroll', () => {
+  if (window.innerWidth <= 768) {
+    const boxes = document.querySelectorAll('.feature-box');
+    boxes.forEach(box => {
+      const boxTop = box.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      if (boxTop < windowHeight - 50) {
+        box.classList.add('visible');
+      }
+    });
   }
 });
 </script>

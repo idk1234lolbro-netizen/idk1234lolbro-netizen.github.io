@@ -43,9 +43,8 @@
     }
 
     nav ul li a {
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.4rem;
       transition: 0.3s;
-      color: #f5f5f5;
     }
 
     nav ul li a:hover, nav ul li a.active {
@@ -131,9 +130,13 @@
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.08);
       position: relative;
-      transition: transform 0.25s ease;
       text-align: center;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
+
+    .feature-box:nth-child(even) { transform: translateX(50px); } /* alternate side */
 
     .feature-box::before {
       content: "";
@@ -154,6 +157,11 @@
       width: 60%;
       height: 2px;
       background: rgba(255, 255, 255, 0.08);
+    }
+
+    .feature-box.visible {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .feature-box:hover { transform: scale(1.06); }
@@ -190,10 +198,9 @@
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="logo">
-    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD LEAGUE</span>
+    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
   </div>
 
   <nav>
@@ -214,7 +221,6 @@
   </div>
 </header>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html" class="active">About</a>
@@ -224,7 +230,6 @@
   <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
 </div>
 
-<!-- PAGE CONTENT -->
 <div class="page-badge">📍 About</div>
 <h1 class="page-title">About CrossWorld League</h1>
 
@@ -316,6 +321,7 @@
 </footer>
 
 <script>
+  // Mobile menu
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const links = mobileMenu.querySelectorAll("a");
@@ -336,6 +342,16 @@
     if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
       mobileMenu.style.right = "-100%";
     }
+  });
+
+  // Feature boxes animation
+  window.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.feature-box');
+    boxes.forEach((box, index) => {
+      setTimeout(() => {
+        box.classList.add('visible');
+      }, index * 200);
+    });
   });
 </script>
 

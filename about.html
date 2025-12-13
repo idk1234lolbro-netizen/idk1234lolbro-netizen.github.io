@@ -11,8 +11,8 @@
       font-family: 'Arial', sans-serif;
       background: #0a0a0a;
       color: #f5f5f5;
+      overflow-x: hidden;
     }
-
     a { text-decoration: none; }
 
     /* Header */
@@ -26,13 +26,9 @@
       top: 0;
       z-index: 1000;
     }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .logo-cross { color: #4ade80; } 
-    .logo-world { color: #f5f5f5; } 
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .logo-cross { color: #4ade80; }
+    .logo-world { color: #f5f5f5; }
 
     nav ul {
       list-style: none;
@@ -51,7 +47,7 @@
       border-bottom: 2px solid #00d4ff;
     }
 
-    /* Mobile 3-lines menu */
+    /* Hamburger Mobile Menu */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -91,7 +87,7 @@
       font-weight: bold;
     }
 
-    /* Page Badge & Title */
+    /* Top badge */
     .page-badge {
       max-width: 900px;
       margin: 3rem auto 1rem auto;
@@ -102,6 +98,8 @@
       text-align: center;
       font-size: 1rem;
     }
+
+    /* Page title */
     .page-title {
       text-align: center;
       font-size: 2.8rem;
@@ -109,7 +107,7 @@
       color: #f5f5f5;
     }
 
-    /* Page Text */
+    /* Page text */
     .page-text {
       max-width: 900px;
       margin: auto;
@@ -119,7 +117,7 @@
       color: #ccc;
     }
 
-    /* Feature Boxes */
+    /* Feature boxes */
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -128,6 +126,7 @@
       margin: 2rem auto;
       max-width: 1000px;
     }
+
     .feature-box {
       background: rgba(34,34,34,0.5);
       border: 1px solid #4ade80;
@@ -135,29 +134,26 @@
       padding: 1.5rem;
       text-align: center;
       width: 250px;
-      transition: all 0.3s ease;
-      cursor: pointer;
+      transition: 0.3s;
     }
+
     .feature-box:hover {
-      transform: scale(1.05);
-      border-color: #00d4ff;
-      box-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff;
+      transform: translateY(-5px);
+      border-color: #00ff6a;
     }
+
     .feature-box .icon svg {
       width: 48px;
       height: 48px;
       margin-bottom: 1rem;
       fill: #4ade80;
-      transition: transform 0.3s, fill 0.3s;
     }
-    .feature-box:hover .icon svg {
-      transform: scale(1.2);
-      fill: #00d4ff;
-    }
+
     .feature-box h3 {
       margin-bottom: 0.5rem;
       color: #f5f5f5;
     }
+
     .feature-box p {
       color: #ccc;
       font-size: 1rem;
@@ -173,7 +169,7 @@
 
     @media(max-width:768px){
       nav ul{display:none;}
-      .menu-toggle { display:flex; }
+      .menu-toggle{display:flex;}
       .page-title{font-size:2rem;}
       .feature-box{width:100%;}
     }
@@ -222,68 +218,64 @@
   We aim to be a long-term, stable league that actually lasts and doesn't randomly shut down. Too many leagues come and go — we're here to build something players can rely on for years.
 </div>
 
-<h2 style="text-align:center; margin-top:3rem;">What Makes Us Different</h2>
+<h2 style="text-align:center; margin-top:3rem;">What Sets Us Apart</h2>
+
 <div class="features">
   <div class="feature-box">
     <div class="icon">
       <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
     </div>
     <h3>Custom Bot</h3>
-    <p>Automated match scheduling & stats.</p>
+    <p>Handles everything from match scheduling to stat tracking.</p>
   </div>
+
   <div class="feature-box">
     <div class="icon">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16z"/></svg>
     </div>
-    <h3>🌐 Custom Website</h3>
-    <p>Clean UI & live info.</p>
+    <h3>Custom Website</h3>
+    <p>Easy access to all league information.</p>
   </div>
+
   <div class="feature-box">
     <div class="icon">
       <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9-7 1z"/></svg>
     </div>
-    <h3>⚡ Future-Ready</h3>
+    <h3>Future-Ready</h3>
     <p>Built for Soccer Zero and beyond.</p>
   </div>
+
   <div class="feature-box">
     <div class="icon">
       <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 6h18v2H3V9zm0 6h12v2H3v-2z"/></svg>
     </div>
-    <h3>📌 Organized Structure</h3>
+    <h3>Organized Structure</h3>
     <p>Clear staff hierarchy.</p>
   </div>
+
   <div class="feature-box">
     <div class="icon">
       <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z"/></svg>
     </div>
-    <h3>🏛️ Long-Term Stability</h3>
-    <p>CWL is built to stay.</p>
+    <h3>Long-Term Stability</h3>
+    <p>CWL is here to stay.</p>
   </div>
+
   <div class="feature-box">
     <div class="icon">
       <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
     </div>
-    <h3>🛠️ Modern Tools</h3>
-    <p>Latest technologies & automation.</p>
-  </div>
-</div>
-
-<h2 style="text-align:center; margin-top:3rem;">Who Built CWL?</h2>
-<div class="features">
-  <div class="feature-box">
-    <div class="icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z"/></svg>
-    </div>
-    <h3>Hammerofthor & Chairman Meow</h3>
-    <p>Our members built this League</p>
+    <h3>Modern Approach</h3>
+    <p>Latest tools & technologies.</p>
   </div>
 </div>
 
 <footer>
-  © 2025 CrossWorld League | Site by Meow
+  © 2025 CrossWorld League | Site by idk1234lolbro-netizen
 </footer>
 
 <script>
+  // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileLinks = mobileMenu.querySelectorAll('a');
@@ -309,17 +301,6 @@
   document.addEventListener('click', (e) => {
     if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
       mobileMenu.style.right = "-100%";
-      mobileLinks.forEach(link => {
-        link.style.opacity = 0;
-        link.style.transform = "translateY(20px)";
-      });
-    }
-  });
-
-  const current = location.pathname.split("/").pop();
-  mobileLinks.forEach(link => {
-    if(link.getAttribute('href') === current) {
-      link.classList.add('active');
     }
   });
 </script>

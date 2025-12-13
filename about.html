@@ -8,12 +8,18 @@
   <style>
     * { box-sizing: border-box; }
 
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0a0a0a;
       color: #f5f5f5;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     a { text-decoration: none; color: inherit; }
@@ -66,7 +72,7 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 70%;
+      width: 100%;
       height: 100%;
       background: rgba(15, 15, 15, 0.96);
       padding: 3rem 2rem;
@@ -75,6 +81,7 @@
       gap: 2rem;
       transition: 0.45s ease;
       z-index: 2000;
+      overflow-y: auto;
     }
 
     .mobile-menu a {
@@ -99,7 +106,7 @@
 
     .page-title {
       text-align: center;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-size: 2.8rem;
       margin-bottom: 2rem;
     }
 
@@ -107,7 +114,7 @@
       max-width: 900px;
       margin: auto;
       padding: 0 1rem;
-      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      font-size: 1.1rem;
       line-height: 1.65;
       color: #ccc;
     }
@@ -136,7 +143,7 @@
       transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
-    .feature-box:nth-child(even) { transform: translateX(50px); } /* alternate side */
+    .feature-box:nth-child(even) { transform: translateX(50px); }
 
     .feature-box::before {
       content: "";
@@ -191,7 +198,7 @@
       nav ul { display: none; }
       .menu-toggle { display: flex; }
       .page-title { font-size: 2rem; }
-      .feature-box { width: 100%; transform: translateX(0); }
+      .feature-box { width: 100%; transform: translateX(0) !important; } /* reset translate for mobile */
     }
   </style>
 </head>
@@ -244,12 +251,6 @@
   We aim to be a long-term, stable league that actually lasts and doesn't randomly
   shut down. Too many leagues come and go — we're here to build something players
   can rely on for years.
-
-  <br><br>
-
-  <strong>Our Vision:</strong><br>
-  To set the standard for Roblox leagues by being organized, future-ready, and
-  creating a community players trust and enjoy.
 </div>
 
 <h2 style="text-align:center; margin-top:3.5rem;">
@@ -347,39 +348,31 @@
   document.addEventListener("click", e => {
     if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
       mobileMenu.style.right = "-100%";
+      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateY(20px)"; });
     }
   });
 
   // Feature boxes animation
-  const boxes = document.querySelectorAll('.feature-box');
-
-  function animateBoxes() {
-    const windowBottom = window.innerHeight + window.scrollY;
-    boxes.forEach(box => {
-      const boxTop = box.offsetTop + 100;
-      if(windowBottom > boxTop) {
-        box.classList.add('visible');
-      }
-    });
-  }
-
-  // PC one-by-one animation on load
   window.addEventListener('DOMContentLoaded', () => {
-    if(window.innerWidth > 768){
-      boxes.forEach((box, i) => {
-        setTimeout(() => {
-          box.classList.add('visible');
-        }, i * 200);
-      });
-    } else {
-      animateBoxes(); // initial check for mobile
-    }
+    const boxes = document.querySelectorAll('.feature-box');
+    boxes.forEach((box, index) => {
+      setTimeout(() => {
+        box.classList.add('visible');
+      }, index * 300); // slower, one by one on PC
+    });
   });
 
-  // Scroll animation only for mobile
+  // Scroll animation for mobile only
   window.addEventListener('scroll', () => {
-    if(window.innerWidth <= 768){
-      animateBoxes();
+    if (window.innerWidth <= 768) {
+      const boxes = document.querySelectorAll('.feature-box');
+      boxes.forEach(box => {
+        const boxTop = box.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (boxTop < windowHeight - 50) {
+          box.classList.add('visible');
+        }
+      });
     }
   });
 </script>

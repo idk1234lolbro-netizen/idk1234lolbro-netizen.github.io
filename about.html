@@ -164,10 +164,7 @@
       transform: translateX(0);
     }
 
-    /* Hover grow effect */
-    .feature-box:hover {
-      transform: scale(1.06);
-    }
+    .feature-box:hover { transform: scale(1.06); }
 
     .feature-box svg {
       width: 46px;
@@ -194,7 +191,7 @@
       nav ul { display: none; }
       .menu-toggle { display: flex; }
       .page-title { font-size: 2rem; }
-      .feature-box { width: 100%; transform: translateX(0); }
+      .feature-box { width: 100%; }
     }
   </style>
 </head>
@@ -203,7 +200,7 @@
 
 <header>
   <div class="logo">
-    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD LEAGUE</span>
+    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
   </div>
 
   <nav>
@@ -249,7 +246,9 @@
   can rely on for years.
 </div>
 
-<h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
+<h2 style="text-align:center; margin-top:3.5rem;">
+  What Sets Us Apart
+</h2>
 
 <div class="features">
 
@@ -291,7 +290,9 @@
 
 </div>
 
-<h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
+<h2 style="text-align:center; margin-top:3.5rem;">
+  Who Built CrossWorld League?
+</h2>
 
 <div class="features">
 
@@ -348,10 +349,16 @@
     const boxes = document.querySelectorAll('.feature-box');
     const triggerBottom = window.innerHeight * 0.85;
 
-    boxes.forEach(box => {
+    boxes.forEach((box, index) => {
       const boxTop = box.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        box.classList.add('visible');
+
+      if (boxTop < triggerBottom && !box.classList.contains('visible')) {
+        // Desktop one-by-one animation
+        if (window.innerWidth > 768) { 
+          setTimeout(() => box.classList.add('visible'), index * 300);
+        } else {
+          box.classList.add('visible'); // Mobile scroll
+        }
       }
     });
   }

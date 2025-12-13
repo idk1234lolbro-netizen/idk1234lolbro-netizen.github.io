@@ -92,11 +92,7 @@
       border-radius: 6px;
       text-align: center;
     }
-    .page-title {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 2rem;
-    }
+    .page-title { text-align: center; font-size: 2.8rem; margin-bottom: 2rem; }
     .page-text {
       max-width: 900px;
       margin: auto;
@@ -148,10 +144,7 @@
       height: 2px;
       background: rgba(255, 255, 255, 0.08);
     }
-    .feature-box.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    .feature-box.visible { opacity: 1; transform: translateX(0); }
     .feature-box:hover { transform: scale(1.06); }
     .feature-box svg {
       width: 46px;
@@ -182,12 +175,22 @@
 
     /* ================= RHOMBUS ROADMAP ================= */
     .roadmap {
-      max-width: 700px;
-      margin: 3rem auto;
+      max-width: 500px;
+      margin: 4rem auto;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      align-items: flex-start;
+      gap: 3rem;
       position: relative;
+    }
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(74,222,128,0.5);
     }
     .roadmap-item {
       display: flex;
@@ -195,37 +198,18 @@
       gap: 1rem;
       position: relative;
     }
-    .roadmap-item::after {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 2.5rem;
-      width: 2px;
-      height: calc(100% - 2.5rem);
-      background: #4ade80;
-      z-index: -1;
-    }
-    .roadmap-item:last-child::after {
-      display: none;
-    }
     .rhombus {
-      width: 25px;
-      height: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: #00d4ff;
+      width: 20px;
+      height: 20px;
+      background: #4ade80;
       transform: rotate(45deg);
+      flex-shrink: 0;
     }
     .roadmap-text {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #ccc;
     }
-    @media (max-width: 768px) {
-      .roadmap { gap: 1.5rem; }
-      .roadmap-text { font-size: 1rem; }
-    }
+
   </style>
 </head>
 <body>
@@ -249,6 +233,7 @@
     <div></div>
   </div>
 </header>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html" class="active">About</a>
@@ -263,11 +248,31 @@
 <div class="page-text">
   CrossWorld League is one of the most modern and future-ready leagues out there.
   We run with our own custom bot and website to make everything smooth, organized,
-  and easy for players.  <br><br>  
+  and easy for players.<br><br>
   <strong>Our Mission:</strong><br>
   We aim to be a long-term, stable league that actually lasts and doesn't randomly
   shut down. Too many leagues come and go — we're here to build something players
   can rely on for years.
+</div>
+
+<h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
+<div class="roadmap">
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div class="roadmap-text">Test website, make everything ready</div>
+  </div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div class="roadmap-text">Current staff members, get ready</div>
+  </div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div class="roadmap-text">After the game release, prepare everything</div>
+  </div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div class="roadmap-text">Matches and events planning</div>
+  </div>
 </div>
 
 <h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
@@ -323,36 +328,14 @@
   </div>
 </div>
 
-<!-- RHOMBUS ROADMAP SECTION -->
-<h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
-<div class="roadmap">
-  <div class="roadmap-item">
-    <div class="rhombus">&#x25C7;</div>
-    <div class="roadmap-text">Test website make everything ready</div>
-  </div>
-  <div class="roadmap-item">
-    <div class="rhombus">&#x25C7;</div>
-    <div class="roadmap-text">Current: get staff members and be ready</div>
-  </div>
-  <div class="roadmap-item">
-    <div class="rhombus">&#x25C7;</div>
-    <div class="roadmap-text">After the game comes out: make everything ready</div>
-  </div>
-  <div class="roadmap-item">
-    <div class="rhombus">&#x25C7;</div>
-    <div class="roadmap-text">Matches and stuff</div>
-  </div>
-</div>
-
-<footer>
-  © 2025 CrossWorld League | Site by meow
-</footer>
+<footer>© 2025 CrossWorld League | Site by meow</footer>
 
 <script>
   // Mobile menu toggle
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const links = mobileMenu.querySelectorAll("a");
+
   menuToggle.addEventListener("click", () => {
     if (mobileMenu.style.right === "0px") {
       mobileMenu.style.right = "-300px";
@@ -365,7 +348,6 @@
     }
   });
 
-  // Close menu if click outside
   document.addEventListener("click", e => {
     if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
       mobileMenu.style.right = "-300px";
@@ -377,9 +359,7 @@
   window.addEventListener('DOMContentLoaded', () => {
     const boxes = document.querySelectorAll('.feature-box');
     boxes.forEach((box, index) => {
-      setTimeout(() => {
-        box.classList.add('visible');
-      }, index * 300);
+      setTimeout(() => { box.classList.add('visible'); }, index * 300);
     });
   });
 
@@ -398,3 +378,4 @@
   });
 </script>
 </body>
+</html>

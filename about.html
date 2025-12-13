@@ -62,11 +62,16 @@
     .menu-toggle {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;   /* smaller gap */
       cursor: pointer;
     }
 
-    .menu-toggle div { width: 26px; height: 3px; background: #fff; }
+    .menu-toggle div {
+      width: 22px;   /* smaller width */
+      height: 2.5px; /* thinner lines */
+      background: #fff;
+      border-radius: 2px; /* slightly rounded */
+    }
 
     .mobile-menu {
       position: fixed;

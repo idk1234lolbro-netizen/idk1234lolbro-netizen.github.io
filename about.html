@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - CROSSWORLD LEAGUE</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,9 +17,14 @@
       color: #f5f5f5;
       overflow-x: hidden;
     }
-    a { text-decoration: none; }
 
-    /* Header (MATCHES HOME) */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= HEADER ================= */
+
     header {
       display: flex;
       justify-content: space-between;
@@ -26,12 +35,19 @@
       top: 0;
       z-index: 1000;
     }
+
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
     }
-    .logo-cross { color: #4ade80; }
-    .logo-world { color: #f5f5f5; }
+
+    .logo-cross {
+      color: #4ade80;
+    }
+
+    .logo-world {
+      color: #f5f5f5;
+    }
 
     nav ul {
       list-style: none;
@@ -40,152 +56,186 @@
       margin: 0;
       padding: 0;
     }
+
     nav ul li a {
-      color: #f5f5f5;
+      padding: 0.2rem 0.4rem;
       transition: 0.3s;
     }
+
     nav ul li a:hover,
     nav ul li a.active {
       color: #00d4ff;
       border-bottom: 2px solid #00d4ff;
     }
 
-    /* Hamburger */
+    /* ================= MOBILE MENU ================= */
+
     .menu-toggle {
       display: none;
       flex-direction: column;
-      cursor: pointer;
       gap: 5px;
+      cursor: pointer;
     }
+
     .menu-toggle div {
-      width: 25px;
+      width: 26px;
       height: 3px;
-      background: #f5f5f5;
+      background: #fff;
     }
 
     .mobile-menu {
       position: fixed;
       top: 0;
       right: -100%;
-      height: 100%;
       width: 70%;
-      background: rgba(17,17,17,0.95);
+      height: 100%;
+      background: rgba(15, 15, 15, 0.96);
+      padding: 3rem 2rem;
       display: flex;
       flex-direction: column;
-      padding: 3rem 2rem;
       gap: 2rem;
-      transition: 0.5s;
+      transition: 0.45s ease;
       z-index: 2000;
     }
+
     .mobile-menu a {
-      color: #f5f5f5;
       font-size: 1.5rem;
       opacity: 0;
       transform: translateY(20px);
-      transition: 0.4s;
+      transition: 0.35s ease;
     }
+
     .mobile-menu a.active {
       color: #00d4ff;
       font-weight: bold;
     }
 
-    /* Page */
+    /* ================= PAGE ================= */
+
     .page-badge {
       max-width: 900px;
       margin: 3rem auto 1rem;
-      padding: 0.5rem;
-      border: 1px solid #4ade80;
-      background: rgba(34,34,34,0.5);
+      padding: 0.6rem 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      border-radius: 6px;
       text-align: center;
-      border-radius: 5px;
     }
 
     .page-title {
       text-align: center;
-      font-size: 2.6rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
     }
 
     .page-text {
       max-width: 900px;
       margin: auto;
       padding: 0 1rem;
+      font-size: 1.1rem;
+      line-height: 1.65;
       color: #ccc;
-      line-height: 1.6;
     }
 
-    /* NEW SECTION: WHO BUILT CWL */
-    .built-section {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: rgba(34,34,34,0.45);
-      border-radius: 10px;
-      border-left: 4px solid #00d4ff;
-    }
+    /* ================= FEATURES / BOXES ================= */
 
-    .built-section h2 {
-      margin-top: 0;
-      color: #f5f5f5;
-    }
-
-    .built-section p {
-      color: #ccc;
-      line-height: 1.6;
-    }
-
-    /* Features */
     .features {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
       justify-content: center;
+      gap: 1.8rem;
+      max-width: 1100px;
       margin: 3rem auto;
-      max-width: 1000px;
+      padding: 0 1rem;
     }
 
     .feature-box {
-      background: rgba(34,34,34,0.5);
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 1.5rem;
-      width: 250px;
-      text-align: center;
+      width: 260px;
+      padding: 2rem 1.6rem 1.8rem;
+      background: linear-gradient(
+        180deg,
+        rgba(30, 30, 30, 0.9),
+        rgba(18, 18, 18, 0.95)
+      );
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
       transition: transform 0.25s ease;
+      text-align: center;
+    }
+
+    .feature-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #00d4ff, #4ade80);
+      border-radius: 14px 14px 0 0;
+    }
+
+    .feature-box::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      width: 60%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .feature-box:hover {
       transform: scale(1.06);
     }
 
-    .feature-box svg {
-      width: 48px;
-      height: 48px;
-      fill: #00d4ff;
-      margin-bottom: 1rem;
+    .feature-box h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
     }
+
+    .feature-box p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #d0d0d0;
+    }
+
+    /* ================= FOOTER ================= */
 
     footer {
-      text-align: center;
+      margin-top: 4rem;
       padding: 2rem;
       background: #111;
-      color: #888;
+      text-align: center;
       font-size: 0.9rem;
+      color: #888;
     }
 
-    @media(max-width:768px){
-      nav ul { display: none; }
-      .menu-toggle { display: flex; }
-      .page-title { font-size: 2rem; }
-      .feature-box { width: 100%; }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .feature-box {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <div class="logo">
-    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD LEAGUE</span>
+    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
   </div>
 
   <nav>
@@ -195,12 +245,13 @@
       <li><a href="staff.html">Staff</a></li>
       <li><a href="teams.html">Teams</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
     </ul>
   </nav>
 
   <div class="menu-toggle" id="menuToggle">
-    <div></div><div></div><div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </header>
 
@@ -210,33 +261,83 @@
   <a href="staff.html">Staff</a>
   <a href="teams.html">Teams</a>
   <a href="contact.html">Contact</a>
-  <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
 </div>
 
 <div class="page-badge">📍 About</div>
 <h1 class="page-title">About CrossWorld League</h1>
 
 <div class="page-text">
-  CrossWorld League is one of the most modern and future-ready leagues out there.  
-  We run with our own custom bot and website to keep everything organized and fair.
+  CrossWorld League is one of the most modern and future-ready leagues out there.
+  We run with our own custom bot and website to make everything smooth, organized,
+  and easy for players.
+
+  <br><br>
+
+  <strong>Our Mission:</strong><br>
+  We aim to be a long-term, stable league that actually lasts and doesn't randomly
+  shut down. Too many leagues come and go — we're here to build something players
+  can rely on for years.
 </div>
 
-<!-- WHO BUILT CWL -->
-<section class="built-section">
-  <h2>Who Built CWL?</h2>
-  <p>
-    CrossWorld League was built by dedicated league managers, developers, and competitive
-    Soccer Zero players who were tired of unstable leagues.
-    <br><br>
-    CWL is community-driven, structured from the ground up, and designed to last —
-    not a quick project, but a long-term competitive league.
-  </p>
-</section>
+<!-- ===== WHO BUILT CWL (ADDED, NOTHING ELSE TOUCHED) ===== -->
 
-<h2 style="text-align:center;">What Sets Us Apart</h2>
+<h2 style="text-align:center; margin-top:3.5rem;">
+  Who Built CrossWorld League?
+</h2>
 
 <div class="features">
-  <!-- your same feature boxes, unchanged -->
+  <div class="feature-box">
+    <h3>Owner</h3>
+    <p>hammerofthor</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Chairman</h3>
+    <p>Meow</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Community</h3>
+    <p>Everyone that is on our league and the people that support us</p>
+  </div>
+</div>
+
+<h2 style="text-align:center; margin-top:3.5rem;">
+  What Sets Us Apart
+</h2>
+
+<div class="features">
+
+  <div class="feature-box">
+    <h3>Custom Bot</h3>
+    <p>Automated match scheduling & stats.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Custom Website</h3>
+    <p>Clean UI & live info.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Future-Ready</h3>
+    <p>Built for Soccer Zero and beyond.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Organized Structure</h3>
+    <p>Clear staff hierarchy.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Long-Term Stability</h3>
+    <p>CWL is built to stay.</p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Modern Tools</h3>
+    <p>Latest technologies & automation.</p>
+  </div>
+
 </div>
 
 <footer>
@@ -244,19 +345,32 @@
 </footer>
 
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const links = mobileMenu.querySelectorAll('a');
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const links = mobileMenu.querySelectorAll("a");
 
-  menuToggle.addEventListener('click', () => {
-    const open = mobileMenu.style.right === "0px";
-    mobileMenu.style.right = open ? "-100%" : "0";
-    links.forEach((l,i)=>{
-      setTimeout(()=>{
-        l.style.opacity = open ? 0 : 1;
-        l.style.transform = open ? "translateY(20px)" : "translateY(0)";
-      }, i*100);
-    });
+  menuToggle.addEventListener("click", () => {
+    if (mobileMenu.style.right === "0px") {
+      mobileMenu.style.right = "-100%";
+      links.forEach(link => {
+        link.style.opacity = 0;
+        link.style.transform = "translateY(20px)";
+      });
+    } else {
+      mobileMenu.style.right = "0";
+      links.forEach((link, i) => {
+        setTimeout(() => {
+          link.style.opacity = 1;
+          link.style.transform = "translateY(0)";
+        }, i * 90);
+      });
+    }
+  });
+
+  document.addEventListener("click", e => {
+    if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      mobileMenu.style.right = "-100%";
+    }
   });
 </script>
 

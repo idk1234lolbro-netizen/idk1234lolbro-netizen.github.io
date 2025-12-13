@@ -167,12 +167,12 @@ nav ul li a:hover, nav ul li a.active {
   position: relative;
   max-width: 600px;
   margin: 3rem auto;
-  padding-left: 40px; /* space for rhombus + gap */
 }
 .roadmap::before {
   content: "";
   position: absolute;
-  left: 20px; /* center of rhombus */
+  left: 50%;
+  transform: translateX(-50%);
   top: 0;
   bottom: 0;
   width: 2px;
@@ -180,17 +180,19 @@ nav ul li a:hover, nav ul li a.active {
 }
 .roadmap-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   position: relative;
   margin-bottom: 2rem;
-  gap: 1rem;
+  text-align: center;
 }
 .rhombus {
   width: 20px;
   height: 20px;
   background: #4ade80;
   transform: rotate(45deg);
-  flex-shrink: 0;
+  position: relative;
+  margin-bottom: 0.5rem;
 }
 
 /* ================= FOOTER ================= */
@@ -209,8 +211,6 @@ footer {
   .menu-toggle { display: flex; }
   .page-title { font-size: 2rem; }
   .feature-box { width: 100%; transform: translateX(0) !important; }
-  .roadmap { padding-left: 30px; }
-  .roadmap::before { left: 15px; }
 }
 </style>
 </head>
@@ -235,6 +235,7 @@ footer {
     <div></div>
   </div>
 </header>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html" class="active">About</a>
@@ -249,7 +250,7 @@ footer {
 <div class="page-text">
   CrossWorld League is one of the most modern and future-ready leagues out there.
   We run with our own custom bot and website to make everything smooth, organized,
-  and easy for players.<br><br>
+  and easy for players.  <br><br>
   <strong>Our Mission:</strong><br>
   We aim to be a long-term, stable league that actually lasts and doesn't randomly
   shut down. Too many leagues come and go — we're here to build something players
@@ -292,10 +293,22 @@ footer {
 
 <h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
 <div class="roadmap">
-  <div class="roadmap-item"><div class="rhombus"></div><div>Test website, make everything ready</div></div>
-  <div class="roadmap-item"><div class="rhombus"></div><div>Current: get staff members and be ready</div></div>
-  <div class="roadmap-item"><div class="rhombus"></div><div>After game release: make everything ready</div></div>
-  <div class="roadmap-item"><div class="rhombus"></div><div>Matches and stuff</div></div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div>Test website, make everything ready</div>
+  </div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div>Current: get staff members and be ready</div>
+  </div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div>After game release: make everything ready</div>
+  </div>
+  <div class="roadmap-item">
+    <div class="rhombus"></div>
+    <div>Matches and stuff</div>
+  </div>
 </div>
 
 <h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
@@ -317,7 +330,9 @@ footer {
   </div>
 </div>
 
-<footer>© 2025 CrossWorld League | Site by meow</footer>
+<footer>
+  © 2025 CrossWorld League | Site by meow
+</footer>
 
 <script>
 // Mobile menu toggle

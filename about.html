@@ -167,26 +167,31 @@ nav ul li a:hover, nav ul li a.active {
   position: relative;
   max-width: 600px;
   margin: 3rem auto;
-  padding-left: 40px;
-  border-left: 2px solid rgba(74,222,128,0.5);
+}
+.roadmap::before {
+  content: "";
+  position: absolute;
+  left: 20px; /* vertical line offset */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(74,222,128,0.5);
 }
 .roadmap-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
   position: relative;
-  margin-bottom: 2.5rem;
-  padding-left: 20px;
 }
 .roadmap-item .rhombus {
-  position: absolute;
-  left: -11px;
-  top: 0;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background: #4ade80;
   transform: rotate(45deg);
+  margin-right: 10px; /* space between rhombus and text */
+  z-index: 1;
 }
 .roadmap-item div {
-  display: inline-block;
-  vertical-align: middle;
   color: #ccc;
   font-size: 1rem;
   line-height: 1.5;

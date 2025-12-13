@@ -106,25 +106,24 @@
   function typeWriter() { if(i<text.length){ typingElement.innerHTML += text[i]==='\n'?'<br>':text[i]; i++; setTimeout(typeWriter,50); } }
   typeWriter();
 
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const links = mobileMenu.querySelectorAll('a');
-
-  menuToggle.addEventListener('click', ()=>{
-    if(mobileMenu.style.right==="0px"){
-      mobileMenu.style.right="-300px";
-      links.forEach(l=>{l.style.opacity=0;l.style.transform="translateX(20px)";});
+  // Toggle panel
+  menuToggle.addEventListener("click", () => {
+    if (mobileMenu.style.right === "0px") {
+      mobileMenu.style.right = "-300px";
+      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
     } else {
-      mobileMenu.style.right="0";
-      links.forEach((l,i)=>{setTimeout(()=>{l.style.opacity=1;l.style.transform="translateX(0)";},i*90);});
+      mobileMenu.style.right = "0";
+      links.forEach((link, i) => {
+        setTimeout(() => { link.style.opacity = 1; link.style.transform = "translateX(0)"; }, i * 90);
+      });
     }
   });
 
-  document.addEventListener('click', e=>{
-    if(!mobileMenu.contains(e.target)&&!menuToggle.contains(e.target)){
-      mobileMenu.style.right="-300px";
-      links.forEach(l=>{l.style.opacity=0;l.style.transform="translateX(20px)";});
+  // Close panel if click outside
+  document.addEventListener("click", e => {
+    if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      mobileMenu.style.right = "-300px";
+      links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
     }
   });
 </script>

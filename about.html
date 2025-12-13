@@ -136,7 +136,12 @@
       transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
-    .feature-box:nth-child(even) { transform: translateX(50px); } /* alternate side */
+    .feature-box:nth-child(even) { transform: translateX(50px); }
+
+    .feature-box.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
     .feature-box::before {
       content: "";
@@ -157,11 +162,6 @@
       width: 60%;
       height: 2px;
       background: rgba(255, 255, 255, 0.08);
-    }
-
-    .feature-box.visible {
-      opacity: 1;
-      transform: translateX(0);
     }
 
     .feature-box:hover { transform: scale(1.06); }
@@ -344,15 +344,19 @@
     }
   });
 
-  // Feature boxes animation
-  window.addEventListener('DOMContentLoaded', () => {
-    const boxes = document.querySelectorAll('.feature-box');
-    boxes.forEach((box, index) => {
-      setTimeout(() => {
-        box.classList.add('visible');
-      }, index * 200);
+  // Scroll animation for feature boxes
+  const boxes = document.querySelectorAll('.feature-box');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-  });
+  }, { threshold: 0.3 });
+
+  boxes.forEach(box => observer.observe(box));
 </script>
 
 </body>

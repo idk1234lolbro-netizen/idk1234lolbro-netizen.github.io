@@ -171,7 +171,7 @@ nav ul li a:hover, nav ul li a.active {
 .roadmap::before {
   content: "";
   position: absolute;
-  left: 20px; /* vertical line offset */
+  left: 40px; /* vertical line position */
   top: 0;
   bottom: 0;
   width: 2px;
@@ -188,13 +188,10 @@ nav ul li a:hover, nav ul li a.active {
   height: 20px;
   background: #4ade80;
   transform: rotate(45deg);
-  margin-right: 10px; /* space between rhombus and text */
+  margin-right: 15px;
+  position: relative;
+  left: -7px; /* shift rhombus slightly inside line */
   z-index: 1;
-}
-.roadmap-item div {
-  color: #ccc;
-  font-size: 1rem;
-  line-height: 1.5;
 }
 
 /* ================= FOOTER ================= */

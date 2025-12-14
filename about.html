@@ -4,9 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About - CROSSWORLD LEAGUE</title>
+
 <style>
 * { box-sizing: border-box; }
 html, body { height: 100%; width: 100%; }
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -15,6 +17,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
+
 a { text-decoration: none; color: inherit; }
 
 /* ================= HEADER ================= */
@@ -28,9 +31,11 @@ header {
   top: 0;
   z-index: 1000;
 }
+
 .logo { font-size: 1.5rem; font-weight: bold; }
 .logo-cross { color: #4ade80; }
 .logo-world { color: #f5f5f5; }
+
 nav ul {
   list-style: none;
   display: flex;
@@ -38,11 +43,14 @@ nav ul {
   margin: 0;
   padding: 0;
 }
+
 nav ul li a {
   padding: 0.2rem 0.4rem;
   transition: 0.3s;
 }
-nav ul li a:hover, nav ul li a.active {
+
+nav ul li a:hover,
+nav ul li a.active {
   color: #00d4ff;
   border-bottom: 2px solid #00d4ff;
 }
@@ -54,7 +62,13 @@ nav ul li a:hover, nav ul li a.active {
   gap: 5px;
   cursor: pointer;
 }
-.menu-toggle div { width: 26px; height: 3px; background: #fff; }
+
+.menu-toggle div {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+}
+
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -71,6 +85,7 @@ nav ul li a:hover, nav ul li a.active {
   overflow-y: auto;
   border-left: 1px solid rgba(255,255,255,0.08);
 }
+
 .mobile-menu a {
   font-size: 1.5rem;
   color: #f5f5f5 !important;
@@ -78,6 +93,7 @@ nav ul li a:hover, nav ul li a.active {
   transform: translateX(20px);
   transition: all 0.35s ease;
 }
+
 .mobile-menu a:hover { color: #00d4ff; }
 .mobile-menu a.active { color: #00d4ff; font-weight: bold; }
 .mobile-menu a:visited { color: #f5f5f5; }
@@ -92,11 +108,13 @@ nav ul li a:hover, nav ul li a.active {
   border-radius: 6px;
   text-align: center;
 }
+
 .page-title {
   text-align: center;
   font-size: 2.8rem;
   margin-bottom: 2rem;
 }
+
 .page-text {
   max-width: 900px;
   margin: auto;
@@ -116,6 +134,7 @@ nav ul li a:hover, nav ul li a.active {
   margin: 3rem auto;
   padding: 0 1rem;
 }
+
 .feature-box {
   width: 260px;
   padding: 2rem 1.6rem 1.8rem;
@@ -128,7 +147,11 @@ nav ul li a:hover, nav ul li a.active {
   transform: translateX(-50px);
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
-.feature-box:nth-child(even) { transform: translateX(50px); }
+
+.feature-box:nth-child(even) {
+  transform: translateX(50px);
+}
+
 .feature-box::before {
   content: "";
   position: absolute;
@@ -139,6 +162,7 @@ nav ul li a:hover, nav ul li a.active {
   background: linear-gradient(90deg, #00d4ff, #4ade80);
   border-radius: 14px 14px 0 0;
 }
+
 .feature-box::after {
   content: "";
   position: absolute;
@@ -148,60 +172,107 @@ nav ul li a:hover, nav ul li a.active {
   height: 2px;
   background: rgba(255, 255, 255, 0.08);
 }
+
 .feature-box.visible {
   opacity: 1;
   transform: translateX(0);
 }
-.feature-box:hover { transform: scale(1.06); }
+
+.feature-box:hover {
+  transform: scale(1.06);
+}
+
 .feature-box svg {
   width: 46px;
   height: 46px;
   margin-bottom: 1rem;
   fill: #00d4ff;
 }
-.feature-box h3 { margin-bottom: 0.6rem; font-size: 1.15rem; }
-.feature-box p { font-size: 0.95rem; line-height: 1.5; color: #d0d0d0; }
+
+.feature-box h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+}
+
+.feature-box p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d0d0d0;
+}
 
 /* ================= ROADMAP ================= */
 .roadmap {
   position: relative;
   max-width: 600px;
   margin: 3rem auto;
+  padding-left: 25px;
 }
+
 .roadmap::before {
   content: "";
   position: absolute;
-  left: 5px;
+  left: 14px;
   top: 0;
   bottom: 0;
   width: 2px;
   background: rgba(74,222,128,0.5);
 }
+
 .roadmap-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 2rem;
   position: relative;
 }
+
 .roadmap-item .rhombus {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   transform: rotate(45deg);
-  margin-right: 15px;
+  margin-right: 18px;
   position: relative;
-  left: -4px;
   z-index: 1;
 }
 
-/* Roadmap colors for states */
+.roadmap-item .rhombus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 14px;
+  background: rgba(0,0,0,0.35);
+  transform: translate(-50%, -50%);
+}
+
 .roadmap-item.completed .rhombus {
-  background: #4ade80; /* full color */
+  background: #4ade80;
 }
+
 .roadmap-item.current .rhombus {
-  background: linear-gradient(to bottom, #4ade80 50%, rgba(255,255,255,0.1) 50%); /* half color */
+  background: linear-gradient(to bottom, #4ade80 50%, rgba(255,255,255,0.1) 50%);
 }
+
 .roadmap-item.upcoming .rhombus {
-  background: rgba(255,255,255,0.1); /* no color / gray */
+  background: rgba(255,255,255,0.1);
+}
+
+.roadmap-item div:last-child {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: roadmapFade 0.8s ease forwards;
+}
+
+.roadmap-item:nth-child(1) div:last-child { animation-delay: 0.2s; }
+.roadmap-item:nth-child(2) div:last-child { animation-delay: 0.5s; }
+.roadmap-item:nth-child(3) div:last-child { animation-delay: 0.8s; }
+.roadmap-item:nth-child(4) div:last-child { animation-delay: 1.1s; }
+
+@keyframes roadmapFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .status-text {
@@ -226,10 +297,13 @@ footer {
   .menu-toggle { display: flex; }
   .page-title { font-size: 2rem; }
   .feature-box { width: 100%; transform: translateX(0) !important; }
+  .roadmap { max-width: 90%; }
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="logo">
     <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
@@ -245,9 +319,7 @@ footer {
     </ul>
   </nav>
   <div class="menu-toggle" id="menuToggle">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
   </div>
 </header>
 
@@ -262,86 +334,45 @@ footer {
 
 <div class="page-badge">📍 About</div>
 <h1 class="page-title">About CrossWorld League</h1>
+
 <div class="page-text">
   CrossWorld League is one of the most modern and future-ready leagues out there.
   We run with our own custom bot and website to make everything smooth, organized,
-  and easy for players.  <br><br>
+  and easy for players.
+  <br><br>
   <strong>Our Mission:</strong><br>
   We aim to be a long-term, stable league that actually lasts and doesn't randomly
   shut down. Too many leagues come and go — we're here to build something players
   can rely on for years.
 </div>
 
-<h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
-<div class="features">
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
-    <h3>Custom Bot</h3>
-    <p>Automated match scheduling & stats.</p>
-  </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
-    <h3>Custom Website</h3>
-    <p>Clean UI & live info.</p>
-  </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
-    <h3>Future-Ready</h3>
-    <p>Built for Soccer Zero and beyond.</p>
-  </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 6h18v2H3zm0 6h12v2H3z"/></svg>
-    <h3>Organized Structure</h3>
-    <p>Clear staff hierarchy.</p>
-  </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5z"/></svg>
-    <h3>Long-Term Stability</h3>
-    <p>CWL is built to stay.</p>
-  </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9z"/></svg>
-    <h3>Modern Tools</h3>
-    <p>Latest technologies & automation.</p>
-  </div>
-</div>
-
 <h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
+
 <div class="roadmap">
   <div class="roadmap-item completed">
     <div class="rhombus"></div>
-    <div>Test website, make everything ready</div>
+    <div>Website foundation completed, layout finalized, and systems tested for stability.</div>
   </div>
+
   <div class="roadmap-item current">
     <div class="rhombus"></div>
-    <div>Current: get staff members and be ready <span class="status-text">(In Progress)</span></div>
+    <div>Currently building the staff team and preparing internal league systems
+      <span class="status-text">(In Progress)</span>
+    </div>
   </div>
-  <div class="roadmap-item upcoming">
-    <div class="rhombus"></div>
-    <div>After game release: make everything ready <span class="status-text">(Coming Soon)</span></div>
-  </div>
-  <div class="roadmap-item upcoming">
-    <div class="rhombus"></div>
-    <div>Matches and stuff <span class="status-text">(Planned)</span></div>
-  </div>
-</div>
 
-<h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
-<div class="features">
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-    <h3>Owner</h3>
-    <p>hammerofthor</p>
+  <div class="roadmap-item upcoming">
+    <div class="rhombus"></div>
+    <div>After launch, teams register, league structure activates, and competition setup completes
+      <span class="status-text">(Coming Soon)</span>
+    </div>
   </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-    <h3>Chairman</h3>
-    <p>Meow</p>
-  </div>
-  <div class="feature-box">
-    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-    <h3>Community</h3>
-    <p>Everyone in the league & supporters</p>
+
+  <div class="roadmap-item upcoming">
+    <div class="rhombus"></div>
+    <div>Official matches begin, standings update live, and full competitive seasons roll out
+      <span class="status-text">(Planned)</span>
+    </div>
   </div>
 </div>
 
@@ -350,51 +381,22 @@ footer {
 </footer>
 
 <script>
-// Mobile menu toggle
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 const links = mobileMenu.querySelectorAll("a");
+
 menuToggle.addEventListener("click", () => {
   if (mobileMenu.style.right === "0px") {
     mobileMenu.style.right = "-300px";
-    links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
+    links.forEach(l => { l.style.opacity = 0; l.style.transform = "translateX(20px)"; });
   } else {
     mobileMenu.style.right = "0";
-    links.forEach((link, i) => {
-      setTimeout(() => { link.style.opacity = 1; link.style.transform = "translateX(0)"; }, i * 90);
-    });
-  }
-});
-
-// Close menu if click outside
-document.addEventListener("click", e => {
-  if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-    mobileMenu.style.right = "-300px";
-    links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
-  }
-});
-
-// Feature boxes animation PC
-window.addEventListener('DOMContentLoaded', () => {
-  const boxes = document.querySelectorAll('.feature-box');
-  boxes.forEach((box, index) => {
-    setTimeout(() => { box.classList.add('visible'); }, index * 300);
-  });
-});
-
-// Scroll animation for mobile only
-window.addEventListener('scroll', () => {
-  if (window.innerWidth <= 768) {
-    const boxes = document.querySelectorAll('.feature-box');
-    boxes.forEach(box => {
-      const boxTop = box.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (boxTop < windowHeight - 50) {
-        box.classList.add('visible');
-      }
-    });
+    links.forEach((l,i)=>setTimeout(()=>{
+      l.style.opacity=1; l.style.transform="translateX(0)";
+    }, i*90));
   }
 });
 </script>
+
 </body>
 </html>

@@ -1,190 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CWL • Staff</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Staff - CROSSWORLD LEAGUE</title>
 
 <style>
-*{
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  width: 100%;
   margin:0;
   padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  overflow-x: hidden;
 }
+a { text-decoration: none; color: inherit; }
 
-body{
-  background:#0b0b0b;
-  color:#fff;
-}
-
-/* ================= NAVBAR ================= */
-header{
-  width:100%;
-  padding:18px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  background:#0b0b0b;
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #111;
+  position: sticky;
+  top: 0;
   z-index:1000;
 }
+.logo { font-size:1.5rem; font-weight:bold; }
+.logo-cross { color:#4ade80; }
+.logo-world { color:#f5f5f5; }
 
-.logo{
-  font-size:1.4rem;
-  font-weight:bold;
-}
-
-nav{
+nav ul {
+  list-style:none;
   display:flex;
-  gap:26px;
-  align-items:center;
+  gap:1.5rem;
+  margin:0;
+  padding:0;
+}
+nav ul li a {
+  padding:0.2rem 0.4rem;
+  transition:0.3s;
+}
+nav ul li a:hover,
+nav ul li a.active {
+  color:#00d4ff;
+  border-bottom:2px solid #00d4ff;
 }
 
-nav a{
-  text-decoration:none;
-  color:#fff;
-  font-size:0.95rem;
-}
-
-.discord-btn{
-  padding:8px 16px;
-  border-radius:8px;
-  background:linear-gradient(90deg,#00d4ff,#4ade80);
-  color:#000;
-  font-weight:bold;
-}
-
-.menu-btn{
-  display:none;
-  font-size:1.8rem;
-  cursor:pointer;
-}
-
-/* MOBILE MENU */
-.mobile-menu{
+/* ================= MOBILE MENU ================= */
+.menu-toggle {
   display:none;
   flex-direction:column;
-  gap:20px;
-  padding:30px;
-  background:#0b0b0b;
+  gap:5px;
+  cursor:pointer;
+}
+.menu-toggle div {
+  width:26px;
+  height:3px;
+  background:#fff;
+}
+.mobile-menu {
+  position:fixed;
+  top:0;
+  right:-300px;
+  width:250px;
+  height:100%;
+  background:rgba(15,15,15,0.98);
+  padding:2rem 1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  transition:right 0.35s ease;
+  z-index:2000;
+}
+.mobile-menu a {
+  font-size:1.5rem;
+  opacity:0;
+  transform:translateX(20px);
+  transition: all 0.35s ease;
+}
+.mobile-menu a.active {
+  color:#00d4ff;
+  font-weight:bold;
 }
 
-.mobile-menu a{
-  font-size:1.1rem;
-  color:#fff;
-  text-decoration:none;
+/* ================= PAGE ================= */
+.page-badge {
+  max-width:900px;
+  margin:3rem auto 1rem;
+  padding:0.6rem 1rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(74,222,128,0.5);
+  border-radius:6px;
+  text-align:center;
 }
-
-/* ================= STAFF SECTION ================= */
-.section{
-  padding:80px 6%;
-  max-width:1200px;
+.page-title {
+  text-align:center;
+  font-size:2.8rem;
+  margin-bottom:2rem;
+}
+.page-text {
+  max-width:900px;
   margin:auto;
-}
-
-.section-title{
+  padding:0 1rem;
+  font-size:1.1rem;
+  line-height:1.65;
+  color:#ccc;
   text-align:center;
-  font-size:2.4rem;
-  margin-bottom:10px;
 }
 
-.section-sub{
-  text-align:center;
-  color:#bdbdbd;
-  max-width:700px;
-  margin:0 auto 60px;
+/* ================= STAFF BOXES ================= */
+.staff-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1.8rem;
+  max-width:1100px;
+  margin:3rem auto;
+  padding:0 1rem;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
-}
-
-/* BOX (ABOUT US STYLE) */
-.box{
-  background:linear-gradient(180deg,rgba(30,30,30,0.95),rgba(18,18,18,0.95));
+.staff-box {
+  width:260px;
+  padding:2rem 1.6rem 1.8rem;
+  background:linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95));
   border-radius:14px;
-  padding:2rem 1.6rem;
   border:1px solid rgba(255,255,255,0.08);
   position:relative;
+  text-align:center;
   opacity:0;
-  transform:translateY(40px);
-  transition:0.5s;
+  transform:translateY(50px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-.box.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.box:hover{
-  transform:scale(1.05);
-}
-
-/* TOP LINE */
-.box::before{
+/* ABOUT-US STYLE LINES */
+.staff-box::before {
   content:"";
   position:absolute;
   top:0;
   left:0;
   width:100%;
   height:4px;
-  background:linear-gradient(90deg,#00d4ff,#4ade80);
+  background: linear-gradient(90deg, #00d4ff, #4ade80);
   border-radius:14px 14px 0 0;
 }
-
-/* CUSTOM EMOJI (ICON STYLE) */
-.icon{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  background:linear-gradient(135deg,#00d4ff,#4ade80);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  color:#000;
-  margin-bottom:14px;
+.staff-box::after {
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:20%;
+  width:60%;
+  height:2px;
+  background: rgba(255,255,255,0.08);
 }
 
-/* TEXT */
-.box h3{
+.staff-box.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+.staff-box:hover {
+  transform: scale(1.06);
+}
+
+.custom-emoji {
+  width:46px;
+  height:46px;
+  margin-bottom:1rem;
+}
+.staff-box h3 {
+  margin-bottom:0.6rem;
   font-size:1.2rem;
-  margin-bottom:10px;
 }
-
-.box p{
+.staff-box p {
   font-size:0.95rem;
-  line-height:1.6;
+  line-height:1.5;
   color:#d0d0d0;
-  margin-bottom:12px;
+  text-align:left;
 }
 
-.how{
-  font-size:0.9rem;
-  color:#9ca3af;
-}
-
-/* NOTE */
-.note{
-  margin-top:70px;
-  padding:24px;
-  background:linear-gradient(180deg,rgba(25,25,25,0.95),rgba(15,15,15,0.95));
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.08);
+/* ================= FOOTER ================= */
+footer {
+  margin-top:4rem;
+  padding:2rem;
+  background:#111;
   text-align:center;
-  color:#cfcfcf;
+  font-size:0.9rem;
+  color:#888;
 }
 
-/* MOBILE */
-@media(max-width:800px){
-  nav{display:none;}
-  .menu-btn{display:block;}
-  .mobile-menu.show{display:flex;}
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  nav ul{display:none;}
+  .menu-toggle{display:flex;}
+  .page-title{font-size:2rem;}
+  .staff-box{width:100%;}
 }
 </style>
 </head>
@@ -192,95 +205,123 @@ nav a{
 <body>
 
 <header>
-  <div class="logo">CWL</div>
+  <div class="logo">
+    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
+  </div>
+
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="staff.html">Staff</a>
-    <a class="discord-btn" href="#">Join Discord</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="staff.html" class="active">Staff</a></li>
+      <li><a href="teams.html">Teams</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">Join Discord</a></li>
+    </ul>
   </nav>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <div class="menu-toggle" id="menuToggle">
+    <div></div><div></div><div></div>
+  </div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
-  <a href="staff.html">Staff</a>
+  <a href="staff.html" class="active">Staff</a>
+  <a href="teams.html">Teams</a>
+  <a href="contact.html">Contact</a>
   <a href="#">Join Discord</a>
 </div>
 
-<section class="section">
-  <h1 class="section-title">Staff Roles</h1>
-  <p class="section-sub">
-    CWL staff roles are built around trust, activity, and community votes.
-  </p>
+<div class="page-badge">📍 Staff</div>
+<h1 class="page-title">Staff Roles & Information</h1>
 
-  <div class="grid">
+<div class="page-text">
+  These roles are mostly selected through community votes.  
+  Stay active, be respectful, and build trust with members.
+</div>
 
-    <div class="box">
-      <div class="icon">👑</div>
-      <h3>Owner / President</h3>
-      <p>Top authority of CWL. Controls vision, final decisions, and league direction.</p>
-      <p class="how">Fixed role for the league creator.</p>
-    </div>
+<div class="staff-container">
 
-    <div class="box">
-      <div class="icon">⚙</div>
-      <h3>Chairman</h3>
-      <p>Assists the Owner, manages operations, helps with bot and website.</p>
-      <p class="how">Assigned by the Owner.</p>
-    </div>
-
-    <div class="box">
-      <div class="icon">📋</div>
-      <h3>Head Manager</h3>
-      <p>Manages staff and events. Limited slots. Count may change.</p>
-      <p class="how">Selected via community voting events.</p>
-    </div>
-
-    <div class="box">
-      <div class="icon">🧩</div>
-      <h3>Lead Staff</h3>
-      <p>Supervises departments like matches, bots, or moderation.</p>
-      <p class="how">Application + experience required.</p>
-    </div>
-
-    <div class="box">
-      <div class="icon">🛡</div>
-      <h3>League Admin</h3>
-      <p>Handles daily admin work and supports staff.</p>
-      <p class="how">Promoted from Moderator.</p>
-    </div>
-
-    <div class="box">
-      <div class="icon">💬</div>
-      <h3>Moderator</h3>
-      <p>Keeps the community safe and assists members.</p>
-      <p class="how">Open to active community members.</p>
-    </div>
-
+  <!-- Owner -->
+  <div class="staff-box">
+    <svg class="custom-emoji" viewBox="0 0 24 24">
+      <path fill="url(#g1)" d="M12 2L15 8h6l-5 5 2 6-6-3-6 3 2-6-5-5h6z"/>
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4ade80"/>
+          <stop offset="100%" stop-color="#00d4ff"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <h3>Owner / President</h3>
+    <p><strong>About:</strong> Final authority and vision holder.<br>
+       <strong>How to get:</strong> Fixed (hammerofthor)</p>
   </div>
 
-  <div class="note">
-    Most roles are influenced by community votes. Be active, respectful, and known.
+  <!-- Chairman -->
+  <div class="staff-box">
+    <svg class="custom-emoji" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="url(#g2)"/>
+      <defs>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#facc15"/>
+          <stop offset="100%" stop-color="#f472b6"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <h3>Chairman</h3>
+    <p><strong>About:</strong> Oversees operations and helps build CWL.<br>
+       <strong>How to get:</strong> Assigned by Owner</p>
   </div>
-</section>
+
+  <!-- Head Manager -->
+  <div class="staff-box">
+    <svg class="custom-emoji" viewBox="0 0 24 24">
+      <path fill="url(#g3)" d="M12 2L2 22h20z"/>
+      <defs>
+        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#f97316"/>
+          <stop offset="100%" stop-color="#ef4444"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <h3>Head Manager</h3>
+    <p><strong>About:</strong> Manages staff and events.<br>
+       <strong>How to get:</strong> Only 5 at once, voted by members</p>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 CrossWorld League | Site by meow
+</footer>
 
 <script>
-function toggleMenu(){
-  document.getElementById("mobileMenu").classList.toggle("show");
-}
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const links = mobileMenu.querySelectorAll("a");
 
-const boxes=document.querySelectorAll(".box");
-function reveal(){
-  boxes.forEach(b=>{
-    if(b.getBoundingClientRect().top<window.innerHeight-80){
-      b.classList.add("visible");
+menuToggle.onclick = () => {
+  if (mobileMenu.style.right === "0px") {
+    mobileMenu.style.right = "-300px";
+    links.forEach(l => { l.style.opacity=0; l.style.transform="translateX(20px)"; });
+  } else {
+    mobileMenu.style.right = "0";
+    links.forEach((l,i)=>setTimeout(()=>{
+      l.style.opacity=1; l.style.transform="translateX(0)";
+    }, i*90));
+  }
+};
+
+window.addEventListener("scroll", ()=>{
+  document.querySelectorAll(".staff-box").forEach(box=>{
+    if(box.getBoundingClientRect().top < window.innerHeight - 60){
+      box.classList.add("visible");
     }
   });
-}
-window.addEventListener("scroll",reveal);
-window.addEventListener("load",reveal);
+});
 </script>
 
 </body>

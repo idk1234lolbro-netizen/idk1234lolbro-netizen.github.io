@@ -6,11 +6,11 @@
 <title>Staff - CROSSWORLD LEAGUE</title>
 <style>
 * { box-sizing: border-box; }
-html, body { height: 100%; width: 100%; margin:0; padding:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #f5f5f5; overflow-x: hidden; }
+html, body { margin:0; padding:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #f5f5f5; overflow-x:hidden; }
 a { text-decoration: none; color: inherit; }
 
-/* ================= HEADER ================= */
-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #111; position: sticky; top: 0; z-index:1000;}
+/* Header */
+header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:#111; position:sticky; top:0; z-index:1000;}
 .logo { font-size:1.5rem; font-weight:bold; }
 .logo-cross { color:#4ade80; }
 .logo-world { color:#f5f5f5; }
@@ -18,7 +18,7 @@ nav ul { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
 nav ul li a { padding:0.2rem 0.4rem; transition:0.3s; }
 nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #00d4ff; }
 
-/* ================= MOBILE MENU ================= */
+/* Mobile menu */
 .menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
 .menu-toggle div { width:26px; height:3px; background:#fff; }
 .mobile-menu { position:fixed; top:0; right:-300px; width:250px; height:100%; background:rgba(15,15,15,0.98); padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem; transition:right 0.35s ease; z-index:2000; overflow-y:auto; border-left:1px solid rgba(255,255,255,0.08);}
@@ -27,25 +27,25 @@ nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #
 .mobile-menu a.active { color:#00d4ff; font-weight:bold; }
 .mobile-menu a:visited { color:#f5f5f5; }
 
-/* ================= PAGE ================= */
+/* Page header */
 .page-badge { max-width:900px; margin:3rem auto 1rem; padding:0.6rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(74,222,128,0.5); border-radius:6px; text-align:center; }
 .page-title { text-align:center; font-size:2.8rem; margin-bottom:2rem; }
 .page-text { max-width:900px; margin:auto; padding:0 1rem; font-size:1.1rem; line-height:1.65; color:#ccc; }
 
-/* ================= STAFF BOXES ================= */
+/* Staff feature boxes */
 .staff-container { display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; max-width:1100px; margin:3rem auto; padding:0 1rem; }
-.staff-box { width:260px; padding:2rem 1.6rem 1.8rem; background:linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95)); border-radius:14px; border:1px solid rgba(255,255,255,0.08); position:relative; text-align:center; opacity:0; transform:translateY(50px); transition: transform 0.5s ease, opacity 0.5s ease;}
-.staff-box::before { content:""; position:absolute; top:0; left:0; width:100%; height:4px; background: linear-gradient(90deg, #00d4ff, #4ade80); border-radius:14px 14px 0 0;}
-.staff-box:hover { transform: scale(1.06); }
-.staff-box .emoji { font-size:2.5rem; margin-bottom:1rem; display:block; }
-.staff-box h3 { margin-bottom:0.6rem; font-size:1.2rem; color:#00d4ff; }
+.staff-box { width:260px; padding:2rem 1.6rem 1.8rem; background:linear-gradient(180deg, rgba(25,25,25,0.9), rgba(15,15,15,0.95)); border-radius:14px; border:1px solid rgba(255,255,255,0.08); position:relative; text-align:center; opacity:0; transform:translateY(50px); transition: transform 0.6s ease, opacity 0.6s ease;}
+.staff-box.visible { opacity:1; transform:translateY(0); }
+.staff-box:hover { transform: scale(1.05); }
+.staff-box .emoji { font-size:2rem; margin-bottom:0.8rem; display:block; }
+.staff-box h3 { margin-bottom:0.6rem; font-size:1.2rem; color:#4ade80; }
 .staff-box p { font-size:0.95rem; line-height:1.5; color:#d0d0d0; }
 
-/* ================= FOOTER ================= */
+/* Footer */
 footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font-size:0.9rem; color:#888; }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){ nav ul{display:none;} .menu-toggle{display:flex;} .page-title{font-size:2rem;} .staff-box{width:100%; transform:translateY(50px) !important;} }
+/* Responsive */
+@media(max-width:768px){ nav ul{display:none;} .menu-toggle{display:flex;} .page-title{font-size:2rem;} .staff-box{width:100%; transform:translateY(0) !important;} }
 </style>
 </head>
 <body>
@@ -73,48 +73,42 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
   <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
 </div>
 
-<div class="page-badge">🛡️ Staff</div>
-<h1 class="page-title">Meet Our Staff</h1>
-<div class="page-text">
-  Roles will most likely be selected by **members' votes**, so be friendly and active with the community!
+<div class="page-badge">🛡 Staff</div>
+<h1 class="page-title">CrossWorld League Staff</h1>
+<div class="page-text" style="text-align:center;">
+  Roles will be most likely selected by members' votes, so be active and get to know your fellow members!
 </div>
 
 <div class="staff-container">
   <div class="staff-box">
     <span class="emoji">👑</span>
     <h3>Owner / President</h3>
-    <p><strong>About:</strong> Top authority of CWL. Responsible for overall league decisions, vision, and guidance.<br>
-    <strong>How to get:</strong> Fixed for creator hammerofthor.</p>
+    <p>Top authority of CWL. Responsible for overall league decisions, vision, and final approvals.<br><strong>How to get:</strong> Fixed position for the creator (hammerofthor).</p>
   </div>
   <div class="staff-box">
-    <span class="emoji">🪙</span>
+    <span class="emoji">🪄</span>
     <h3>Chairman</h3>
-    <p><strong>About:</strong> Assists owner, oversees operations, and ensures smooth running of bot, website, and league.<br>
-    <strong>How to get:</strong> Assigned by Owner. Currently: Meow.</p>
+    <p>Assists the Owner in decision-making, oversees operations, and ensures smooth functioning.<br><strong>How to get:</strong> Assigned by the Owner (currently meow).</p>
+  </div>
+  <div class="staff-box">
+    <span class="emoji">⭐</span>
+    <h3>Head Manager</h3>
+    <p>Manages staff team, schedules matches, coordinates events. Only 5 members at a time.<br><strong>How to get:</strong> Selected by members' vote during events.</p>
   </div>
   <div class="staff-box">
     <span class="emoji">🎯</span>
-    <h3>Head Manager</h3>
-    <p><strong>About:</strong> Manages staff, schedules matches, coordinates events. Only 5 active at a time (number can change).<br>
-    <strong>How to get:</strong> Selected through member votes and events.</p>
-  </div>
-  <div class="staff-box">
-    <span class="emoji">🛠️</span>
     <h3>Lead Staff</h3>
-    <p><strong>About:</strong> Supervises staff, manages departments (matches, bot, website), reports tasks.<br>
-    <strong>How to get:</strong> Application + member vote + experience in league.</p>
+    <p>Supervises lower-level staff, manages departments, reports tasks.<br><strong>How to get:</strong> Staff application required, voted by members.</p>
   </div>
   <div class="staff-box">
-    <span class="emoji">📋</span>
+    <span class="emoji">🛡</span>
     <h3>League Admin</h3>
-    <p><strong>About:</strong> Handles daily admin tasks, moderates server, updates records, assists staff.<br>
-    <strong>How to get:</strong> Promoted from moderator based on activity, trust, and rule knowledge.</p>
+    <p>Handles day-to-day admin tasks, moderates, and assists staff.<br><strong>How to get:</strong> Promoted from Moderator based on activity and trust.</p>
   </div>
   <div class="staff-box">
-    <span class="emoji">🛡️</span>
+    <span class="emoji">📝</span>
     <h3>Moderator</h3>
-    <p><strong>About:</strong> Ensures rules are followed, assists players, reports issues.<br>
-    <strong>How to get:</strong> Open to active, trustworthy members. Apply via events & votes.</p>
+    <p>Ensures community rules are followed, assists players, reports issues.<br><strong>How to get:</strong> Open to active members, apply via events and votes.</p>
   </div>
 </div>
 
@@ -123,40 +117,28 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
 </footer>
 
 <script>
-// Mobile menu toggle
+// Mobile menu
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 const links = mobileMenu.querySelectorAll("a");
 menuToggle.addEventListener("click", () => {
-  if (mobileMenu.style.right === "0px") {
-    mobileMenu.style.right = "-300px";
-    links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
-  } else {
-    mobileMenu.style.right = "0";
-    links.forEach((link,i)=>{setTimeout(()=>{link.style.opacity=1;link.style.transform="translateX(0)";}, i*90)});
-  }
+  if(mobileMenu.style.right==="0px"){mobileMenu.style.right="-300px"; links.forEach(l=>{l.style.opacity=0;l.style.transform="translateX(20px)";});} 
+  else { mobileMenu.style.right="0"; links.forEach((l,i)=>{setTimeout(()=>{l.style.opacity=1;l.style.transform="translateX(0)";},i*90)});}
 });
-document.addEventListener("click", e => {
-  if(!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)){
-    mobileMenu.style.right="-300px";
-    links.forEach(link => { link.style.opacity = 0; link.style.transform="translateX(20px)"; });
-  }
-});
+document.addEventListener("click", e => { if(!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)){ mobileMenu.style.right="-300px"; links.forEach(l=>{l.style.opacity=0;l.style.transform="translateX(20px)";});}});
 
-// Feature boxes scroll animation
-window.addEventListener('DOMContentLoaded', () => {
-  const boxes=document.querySelectorAll('.staff-box');
-  boxes.forEach((box,index)=>{setTimeout(()=>{box.style.opacity=1;box.style.transform="translateY(0)";},index*200)});
-});
+// Staff box animation
 window.addEventListener('scroll',()=>{
-  if(window.innerWidth<=768){
-    const boxes=document.querySelectorAll('.staff-box');
-    boxes.forEach(box=>{
-      const boxTop=box.getBoundingClientRect().top;
-      const windowHeight=window.innerHeight;
-      if(boxTop<windowHeight-50){box.style.opacity=1; box.style.transform="translateY(0)";}
-    });
-  }
+  const boxes = document.querySelectorAll('.staff-box');
+  boxes.forEach(box=>{
+    const top = box.getBoundingClientRect().top;
+    const windowH = window.innerHeight;
+    if(top<windowH-50){box.classList.add('visible');}
+  });
+});
+window.addEventListener('DOMContentLoaded',()=>{
+  const boxes=document.querySelectorAll('.staff-box');
+  boxes.forEach((box,index)=>{setTimeout(()=>{box.classList.add('visible');},index*200)});
 });
 </script>
 </body>

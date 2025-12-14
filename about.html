@@ -34,8 +34,11 @@ nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #
 
 /* ================= FEATURES ================= */
 .features { display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; max-width:1100px; margin:3rem auto; padding:0 1rem; }
-.feature-box { width:260px; padding:2rem 1.6rem 1.8rem; background:linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95)); border-radius:14px; border:1px solid rgba(255,255,255,0.08); position:relative; text-align:center; opacity:0; transform:translateY(30px); transition: transform 0.6s ease, opacity 0.6s ease;}
-.feature-box.visible { opacity:1; transform:translateY(0); }
+.feature-box { width:260px; padding:2rem 1.6rem 1.8rem; background:linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95)); border-radius:14px; border:1px solid rgba(255,255,255,0.08); position:relative; text-align:center; opacity:0; transform:translateX(-50px); transition: transform 0.5s ease, opacity 0.5s ease;}
+.feature-box:nth-child(even) { transform:translateX(50px); }
+.feature-box::before { content:""; position:absolute; top:0; left:0; width:100%; height:4px; background: linear-gradient(90deg, #00d4ff, #4ade80); border-radius:14px 14px 0 0;}
+.feature-box::after { content:""; position:absolute; bottom:0; left:20%; width:60%; height:2px; background: rgba(255,255,255,0.08);}
+.feature-box.visible { opacity:1; transform:translateX(0); }
 .feature-box:hover { transform: scale(1.06); }
 .feature-box svg { width:46px; height:46px; margin-bottom:1rem; fill:#00d4ff; }
 .feature-box h3 { margin-bottom:0.6rem; font-size:1.15rem; }
@@ -44,7 +47,11 @@ nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #
 /* ================= ROADMAP ================= */
 .roadmap { position: relative; max-width:600px; margin:3rem auto; z-index:1; }
 .roadmap-line { position:absolute; left:5px; top:0; width:2px; height:0; background:#4ade80; z-index:0; animation:fillRoadmap 3s forwards; }
-@keyframes fillRoadmap { 0% { height:0; } 50% { height:50%; } 100% { height:100%; } }
+@keyframes fillRoadmap {
+  0% { height:0; }
+  50% { height:50%; }
+  100% { height:100%; }
+}
 .roadmap-item { display:flex; align-items:center; margin-bottom:2rem; position:relative; z-index:1; }
 .roadmap-item .rhombus { width:20px; height:20px; transform:rotate(45deg); margin-right:15px; position:relative; left:-4px; z-index:1; }
 .roadmap-item.completed .rhombus { background:#4ade80; }
@@ -56,12 +63,7 @@ nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #
 footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font-size:0.9rem; color:#888; }
 
 /* ================= RESPONSIVE ================= */
-@media(max-width:768px){ 
-  nav ul{display:none;} 
-  .menu-toggle{display:flex;} 
-  .page-title{font-size:2rem;} 
-  .feature-box{width:100%;} 
-}
+@media(max-width:768px){ nav ul{display:none;} .menu-toggle{display:flex;} .page-title{font-size:2rem;} .feature-box{width:100%; transform:translateX(0) !important;} }
 </style>
 </head>
 <body>
@@ -100,13 +102,81 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
 
 <h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
 <div class="features">
-  <div class="feature-box">Custom Bot</div>
-  <div class="feature-box">Custom Website</div>
-  <div class="feature-box">Future-Ready</div>
-  <div class="feature-box">Organized Structure</div>
-  <div class="feature-box">Long-Term Stability</div>
-  <div class="feature-box">Modern Tools</div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
+    <h3>Custom Bot</h3>
+    <p>Automated match scheduling & stats.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+    <h3>Custom Website</h3>
+    <p>Clean UI & live info.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
+    <h3>Future-Ready</h3>
+    <p>Built for Soccer Zero and beyond.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 6h18v2H3zm0 6h12v2H3z"/></svg>
+    <h3>Organized Structure</h3>
+    <p>Clear staff hierarchy.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5z"/></svg>
+    <h3>Long-Term Stability</h3>
+    <p>CWL is built to stay.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9z"/></svg>
+    <h3>Modern Tools</h3>
+    <p>Latest technologies & automation.</p>
+  </div>
 </div>
+
+<h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
+<div class="roadmap">
+  <div class="roadmap-line"></div>
+  <div class="roadmap-item completed">
+    <div class="rhombus"></div>
+    <div>Test website, make everything ready</div>
+  </div>
+  <div class="roadmap-item current">
+    <div class="rhombus"></div>
+    <div>Current: get staff members and be ready <span class="status-text">(In Progress)</span></div>
+  </div>
+  <div class="roadmap-item upcoming">
+    <div class="rhombus"></div>
+    <div>After game release: make everything ready <span class="status-text">(Coming Soon)</span></div>
+  </div>
+  <div class="roadmap-item upcoming">
+    <div class="rhombus"></div>
+    <div>Matches and stuff <span class="status-text">(Planned)</span></div>
+  </div>
+</div>
+
+<h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
+<div class="features">
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+    <h3>Owner</h3>
+    <p>hammerofthor</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    <h3>Chairman</h3>
+    <p>Meow</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+    <h3>Community</h3>
+    <p>Everyone in the league & supporters</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 CrossWorld League | Site by meow
+</footer>
 
 <script>
 // Mobile menu toggle
@@ -116,47 +186,34 @@ const links = mobileMenu.querySelectorAll("a");
 menuToggle.addEventListener("click", () => {
   if (mobileMenu.style.right === "0px") {
     mobileMenu.style.right = "-300px";
-    links.forEach(link => { 
-      link.style.opacity = 0; 
-      link.style.transform = "translateX(20px)"; 
-    });
+    links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
   } else {
     mobileMenu.style.right = "0";
-    links.forEach((link,i)=>{
-      setTimeout(()=>{
-        link.style.opacity=1;
-        link.style.transform="translateX(0)";
-      }, i*90);
-    });
+    links.forEach((link,i)=>{setTimeout(()=>{link.style.opacity=1;link.style.transform="translateX(0)";}, i*90)});
   }
 });
 document.addEventListener("click", e => {
   if(!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)){
     mobileMenu.style.right="-300px";
-    links.forEach(link => { 
-      link.style.opacity = 0; 
-      link.style.transform="translateX(20px)"; 
-    });
+    links.forEach(link => { link.style.opacity = 0; link.style.transform="translateX(20px)"; });
   }
 });
 
-// Feature boxes scroll animation
-const boxes = document.querySelectorAll('.feature-box');
-
-function revealBoxes() {
-  const windowHeight = window.innerHeight;
-  boxes.forEach(box => {
-    const top = box.getBoundingClientRect().top;
-    if(top < windowHeight - 50) {
-      box.classList.add('visible');
-    }
-  });
-}
-
-// Initial check + scroll
-window.addEventListener('scroll', revealBoxes);
-window.addEventListener('resize', revealBoxes);
-window.addEventListener('DOMContentLoaded', revealBoxes);
+// Feature boxes animation PC & mobile scroll
+window.addEventListener('DOMContentLoaded', () => {
+  const boxes=document.querySelectorAll('.feature-box');
+  boxes.forEach((box,index)=>{setTimeout(()=>{box.classList.add('visible');},index*300)});
+});
+window.addEventListener('scroll',()=>{
+  if(window.innerWidth<=768){
+    const boxes=document.querySelectorAll('.feature-box');
+    boxes.forEach(box=>{
+      const boxTop=box.getBoundingClientRect().top;
+      const windowHeight=window.innerHeight;
+      if(boxTop<windowHeight-50){box.classList.add('visible');}
+    });
+  }
+});
 </script>
 </body>
 </html>

@@ -171,7 +171,7 @@ nav ul li a:hover, nav ul li a.active {
 .roadmap::before {
   content: "";
   position: absolute;
-  left: 5px; 
+  left: 5px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -186,28 +186,28 @@ nav ul li a:hover, nav ul li a.active {
 .roadmap-item .rhombus {
   width: 20px;
   height: 20px;
-  background: rgba(255,255,255,0.1);
   transform: rotate(45deg);
   margin-right: 15px;
   position: relative;
   left: -4px;
   z-index: 1;
 }
+
+/* Roadmap colors for states */
 .roadmap-item.completed .rhombus {
-  background: #4ade80;
+  background: #4ade80; /* full color */
 }
-.roadmap-item.current .rhombus::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 50%;   /* right half */
-  height: 100%;
-  background: #4ade80;
-  transform: rotate(45deg);
+.roadmap-item.current .rhombus {
+  background: linear-gradient(to bottom, #4ade80 50%, rgba(255,255,255,0.1) 50%); /* half color */
 }
 .roadmap-item.upcoming .rhombus {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.1); /* no color / gray */
+}
+
+.status-text {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-left: 6px;
 }
 
 /* ================= FOOTER ================= */
@@ -314,15 +314,15 @@ footer {
   </div>
   <div class="roadmap-item current">
     <div class="rhombus"></div>
-    <div>Current: getting staff & preparing</div>
+    <div>Current: get staff members and be ready <span class="status-text">(In Progress)</span></div>
   </div>
   <div class="roadmap-item upcoming">
     <div class="rhombus"></div>
-    <div>After game release: make everything ready</div>
+    <div>After game release: make everything ready <span class="status-text">(Coming Soon)</span></div>
   </div>
   <div class="roadmap-item upcoming">
     <div class="rhombus"></div>
-    <div>Matches and events</div>
+    <div>Matches and stuff <span class="status-text">(Planned)</span></div>
   </div>
 </div>
 
@@ -374,7 +374,7 @@ document.addEventListener("click", e => {
   }
 });
 
-// Feature boxes animation
+// Feature boxes animation PC
 window.addEventListener('DOMContentLoaded', () => {
   const boxes = document.querySelectorAll('.feature-box');
   boxes.forEach((box, index) => {

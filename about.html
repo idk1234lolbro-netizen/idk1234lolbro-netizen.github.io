@@ -6,245 +6,69 @@
 <title>About - CROSSWORLD LEAGUE</title>
 <style>
 * { box-sizing: border-box; }
-html, body { height: 100%; width: 100%; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0a0a0a;
-  color: #f5f5f5;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
+html, body { height: 100%; width: 100%; margin:0; padding:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #f5f5f5; overflow-x: hidden; }
 a { text-decoration: none; color: inherit; }
 
 /* ================= HEADER ================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #111;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.logo { font-size: 1.5rem; font-weight: bold; }
-.logo-cross { color: #4ade80; }
-.logo-world { color: #f5f5f5; }
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-nav ul li a {
-  padding: 0.2rem 0.4rem;
-  transition: 0.3s;
-}
-nav ul li a:hover, nav ul li a.active {
-  color: #00d4ff;
-  border-bottom: 2px solid #00d4ff;
-}
+header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #111; position: sticky; top: 0; z-index:1000;}
+.logo { font-size:1.5rem; font-weight:bold; }
+.logo-cross { color:#4ade80; }
+.logo-world { color:#f5f5f5; }
+nav ul { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
+nav ul li a { padding:0.2rem 0.4rem; transition:0.3s; }
+nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #00d4ff; }
 
 /* ================= MOBILE MENU ================= */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-.menu-toggle div { width: 26px; height: 3px; background: #fff; }
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  width: 250px;
-  height: 100%;
-  background: rgba(15, 15, 15, 0.98);
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  transition: right 0.35s ease;
-  z-index: 2000;
-  overflow-y: auto;
-  border-left: 1px solid rgba(255,255,255,0.08);
-}
-.mobile-menu a {
-  font-size: 1.5rem;
-  color: #f5f5f5 !important;
-  opacity: 0;
-  transform: translateX(20px);
-  transition: all 0.35s ease;
-}
-.mobile-menu a:hover { color: #00d4ff; }
-.mobile-menu a.active { color: #00d4ff; font-weight: bold; }
-.mobile-menu a:visited { color: #f5f5f5; }
+.menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+.menu-toggle div { width:26px; height:3px; background:#fff; }
+.mobile-menu { position:fixed; top:0; right:-300px; width:250px; height:100%; background:rgba(15,15,15,0.98); padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem; transition:right 0.35s ease; z-index:2000; overflow-y:auto; border-left:1px solid rgba(255,255,255,0.08);}
+.mobile-menu a { font-size:1.5rem; color:#f5f5f5 !important; opacity:0; transform:translateX(20px); transition: all 0.35s ease;}
+.mobile-menu a:hover { color:#00d4ff; }
+.mobile-menu a.active { color:#00d4ff; font-weight:bold; }
+.mobile-menu a:visited { color:#f5f5f5; }
 
 /* ================= PAGE ================= */
-.page-badge {
-  max-width: 900px;
-  margin: 3rem auto 1rem;
-  padding: 0.6rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(74, 222, 128, 0.5);
-  border-radius: 6px;
-  text-align: center;
-}
-.page-title {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 2rem;
-}
-.page-text {
-  max-width: 900px;
-  margin: auto;
-  padding: 0 1rem;
-  font-size: 1.1rem;
-  line-height: 1.65;
-  color: #ccc;
-}
+.page-badge { max-width:900px; margin:3rem auto 1rem; padding:0.6rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(74,222,128,0.5); border-radius:6px; text-align:center; }
+.page-title { text-align:center; font-size:2.8rem; margin-bottom:2rem; }
+.page-text { max-width:900px; margin:auto; padding:0 1rem; font-size:1.1rem; line-height:1.65; color:#ccc; }
 
 /* ================= FEATURES ================= */
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.8rem;
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-}
-.feature-box {
-  width: 260px;
-  padding: 2rem 1.6rem 1.8rem;
-  background: linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95));
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.08);
-  position: relative;
-  text-align: center;
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.feature-box:nth-child(even) { transform: translateX(50px); }
-.feature-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #00d4ff, #4ade80);
-  border-radius: 14px 14px 0 0;
-}
-.feature-box::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-  width: 60%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
-}
-.feature-box.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
+.features { display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; max-width:1100px; margin:3rem auto; padding:0 1rem; }
+.feature-box { width:260px; padding:2rem 1.6rem 1.8rem; background:linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95)); border-radius:14px; border:1px solid rgba(255,255,255,0.08); position:relative; text-align:center; opacity:0; transform:translateX(-50px); transition: transform 0.5s ease, opacity 0.5s ease;}
+.feature-box:nth-child(even) { transform:translateX(50px); }
+.feature-box::before { content:""; position:absolute; top:0; left:0; width:100%; height:4px; background: linear-gradient(90deg, #00d4ff, #4ade80); border-radius:14px 14px 0 0;}
+.feature-box::after { content:""; position:absolute; bottom:0; left:20%; width:60%; height:2px; background: rgba(255,255,255,0.08);}
+.feature-box.visible { opacity:1; transform:translateX(0); }
 .feature-box:hover { transform: scale(1.06); }
-.feature-box svg {
-  width: 46px;
-  height: 46px;
-  margin-bottom: 1rem;
-  fill: #00d4ff;
-}
-.feature-box h3 { margin-bottom: 0.6rem; font-size: 1.15rem; }
-.feature-box p { font-size: 0.95rem; line-height: 1.5; color: #d0d0d0; }
+.feature-box svg { width:46px; height:46px; margin-bottom:1rem; fill:#00d4ff; }
+.feature-box h3 { margin-bottom:0.6rem; font-size:1.15rem; }
+.feature-box p { font-size:0.95rem; line-height:1.5; color:#d0d0d0; }
 
 /* ================= ROADMAP ================= */
-.roadmap {
-  position: relative;
-  max-width: 600px;
-  margin: 3rem auto;
-}
-.roadmap::before {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(74,222,128,0.5);
-}
-.roadmap-line {
-  position: absolute;
-  left: 5px;
-  top: 0;
-  width: 2px;
-  height: 0;
-  background: #4ade80;
-  z-index: 0;
-  animation: fillRoadmap 3s forwards;
-}
+.roadmap { position: relative; max-width:600px; margin:3rem auto; z-index:1; }
+.roadmap-line { position:absolute; left:5px; top:0; width:2px; height:0; background:#4ade80; z-index:0; animation:fillRoadmap 3s forwards; }
 @keyframes fillRoadmap {
-  0% { height: 0; }
-  40% { height: 38%; } /* first item full */
-  70% { height: 55%; } /* second item half */
-  100% { height: 55%; } /* stop */
+  0% { height:0; }
+  50% { height:50%; }
+  100% { height:100%; }
 }
-.roadmap-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  position: relative;
-  gap: 12px;
-}
-.roadmap-item .rhombus {
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.3);
-  position: relative;
-  left: -4px;
-  z-index: 1;
-  animation: rhombusFade 1.2s forwards;
-}
-.roadmap-item.completed .rhombus { background:#4ade80; border-color:#4ade80; }
-.roadmap-item.current .rhombus { background: linear-gradient(to bottom,#4ade80 50%,rgba(255,255,255,0.1) 50%); }
-.roadmap-item.upcoming .rhombus { background: rgba(255,255,255,0.08); }
-
-.status-text {
-  font-size: 0.85rem;
-  color: #aaa;
-  margin-left: 6px;
-}
+.roadmap-item { display:flex; align-items:center; margin-bottom:2rem; position:relative; z-index:1; }
+.roadmap-item .rhombus { width:20px; height:20px; transform:rotate(45deg); margin-right:15px; position:relative; left:-4px; z-index:1; }
+.roadmap-item.completed .rhombus { background:#4ade80; }
+.roadmap-item.current .rhombus { background: linear-gradient(to bottom, #4ade80 50%, rgba(255,255,255,0.1) 50%); }
+.roadmap-item.upcoming .rhombus { background: rgba(255,255,255,0.1); }
+.status-text { font-size:0.85rem; color:#aaa; margin-left:6px; }
 
 /* ================= FOOTER ================= */
-footer {
-  margin-top: 4rem;
-  padding: 2rem;
-  background: #111;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #888;
-}
+footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font-size:0.9rem; color:#888; }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  nav ul { display: none; }
-  .menu-toggle { display: flex; }
-  .page-title { font-size: 2rem; }
-  .feature-box { width: 100%; transform: translateX(0) !important; }
-}
+@media(max-width:768px){ nav ul{display:none;} .menu-toggle{display:flex;} .page-title{font-size:2rem;} .feature-box{width:100%; transform:translateX(0) !important;} }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">
-    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
-  </div>
+  <div class="logo"><span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span></div>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -255,11 +79,7 @@ footer {
       <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
     </ul>
   </nav>
-  <div class="menu-toggle" id="menuToggle">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+  <div class="menu-toggle" id="menuToggle"><div></div><div></div><div></div></div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -275,11 +95,43 @@ footer {
 <h1 class="page-title">About CrossWorld League</h1>
 <div class="page-text">
   CrossWorld League is one of the most modern and future-ready leagues out there.
-  We run with our own custom bot and website to make everything smooth, organized,
-  and easy for players.<br><br>
+  We run with our own custom bot and website to make everything smooth, organized, and easy for players.<br><br>
   <strong>Our Mission:</strong><br>
-  We aim to be a long-term, stable league that actually lasts and doesn't randomly
-  shut down.
+  We aim to be a long-term, stable league that actually lasts and doesn't randomly shut down. Too many leagues come and go — we're here to build something players can rely on for years.
+</div>
+
+<h2 style="text-align:center; margin-top:3.5rem;">What Sets Us Apart</h2>
+<div class="features">
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v5H5v4h2v5h2v-5h2v5h2v-5h2v5h2v-5h2v-4h-2V7c0-2.757-2.243-5-5-5z"/></svg>
+    <h3>Custom Bot</h3>
+    <p>Automated match scheduling & stats.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+    <h3>Custom Website</h3>
+    <p>Clean UI & live info.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
+    <h3>Future-Ready</h3>
+    <p>Built for Soccer Zero and beyond.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 6h18v2H3zm0 6h12v2H3z"/></svg>
+    <h3>Organized Structure</h3>
+    <p>Clear staff hierarchy.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5z"/></svg>
+    <h3>Long-Term Stability</h3>
+    <p>CWL is built to stay.</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M2 22l1-7 9-9 7-1-1 7-9 9z"/></svg>
+    <h3>Modern Tools</h3>
+    <p>Latest technologies & automation.</p>
+  </div>
 </div>
 
 <h2 style="text-align:center; margin-top:3.5rem;">Roadmap</h2>
@@ -303,6 +155,25 @@ footer {
   </div>
 </div>
 
+<h2 style="text-align:center; margin-top:3.5rem;">Who Built CrossWorld League?</h2>
+<div class="features">
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+    <h3>Owner</h3>
+    <p>hammerofthor</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    <h3>Chairman</h3>
+    <p>Meow</p>
+  </div>
+  <div class="feature-box">
+    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+    <h3>Community</h3>
+    <p>Everyone in the league & supporters</p>
+  </div>
+</div>
+
 <footer>
   © 2025 CrossWorld League | Site by meow
 </footer>
@@ -318,18 +189,30 @@ menuToggle.addEventListener("click", () => {
     links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
   } else {
     mobileMenu.style.right = "0";
-    links.forEach((link, i) => {
-      setTimeout(() => { link.style.opacity = 1; link.style.transform = "translateX(0)"; }, i * 90);
-    });
+    links.forEach((link,i)=>{setTimeout(()=>{link.style.opacity=1;link.style.transform="translateX(0)";}, i*90)});
+  }
+});
+document.addEventListener("click", e => {
+  if(!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)){
+    mobileMenu.style.right="-300px";
+    links.forEach(link => { link.style.opacity = 0; link.style.transform="translateX(20px)"; });
   }
 });
 
-// Feature boxes animation PC
+// Feature boxes animation PC & mobile scroll
 window.addEventListener('DOMContentLoaded', () => {
-  const boxes = document.querySelectorAll('.feature-box');
-  boxes.forEach((box, index) => {
-    setTimeout(() => { box.classList.add('visible'); }, index * 300);
-  });
+  const boxes=document.querySelectorAll('.feature-box');
+  boxes.forEach((box,index)=>{setTimeout(()=>{box.classList.add('visible');},index*300)});
+});
+window.addEventListener('scroll',()=>{
+  if(window.innerWidth<=768){
+    const boxes=document.querySelectorAll('.feature-box');
+    boxes.forEach(box=>{
+      const boxTop=box.getBoundingClientRect().top;
+      const windowHeight=window.innerHeight;
+      if(boxTop<windowHeight-50){box.classList.add('visible');}
+    });
+  }
 });
 </script>
 </body>

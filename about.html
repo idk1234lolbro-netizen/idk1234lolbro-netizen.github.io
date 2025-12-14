@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About - CrossWorld League</title>
+<title>About - CROSSWORLD LEAGUE</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; }
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #0a0a0a;
   color: #f5f5f5;
+  overflow-x: hidden;
 }
 
 /* ================= HEADER ================= */
@@ -23,89 +24,177 @@ header {
   align-items: center;
   padding: 1rem 2rem;
   background: #111;
-}
-.logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-.logo span:first-child {
-  color: #4ade80;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+.logo { font-size: 1.5rem; font-weight: bold; }
+.logo-cross { color: #4ade80; }
+.logo-world { color: #fff; }
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #00d4ff;
+  border-bottom: 2px solid #00d4ff;
+}
+
+/* ================= MOBILE MENU ================= */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle div {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 250px;
+  height: 100%;
+  background: rgba(15,15,15,0.98);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: right 0.35s ease;
+  z-index: 2000;
+}
+
+.mobile-menu a {
+  color: #fff;
+  font-size: 1.4rem;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.35s ease;
+}
+
+.mobile-menu a.active { color: #00d4ff; }
+
 /* ================= PAGE ================= */
-h1, h2 {
+.page-badge {
+  max-width: 900px;
+  margin: 3rem auto 1rem;
+  padding: 0.6rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(74,222,128,0.4);
   text-align: center;
 }
+
+.page-title {
+  text-align: center;
+  font-size: 2.8rem;
+}
+
 .page-text {
   max-width: 900px;
   margin: auto;
   padding: 0 1rem;
   color: #ccc;
-  line-height: 1.6;
+  line-height: 1.65;
 }
+
+/* ================= FEATURES ================= */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  justify-content: center;
+  margin: 3rem auto;
+  max-width: 1100px;
+}
+
+.feature-box {
+  width: 260px;
+  padding: 2rem;
+  background: #121212;
+  border-radius: 14px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-box:hover { transform: scale(1.06); }
 
 /* ================= ROADMAP ================= */
-.roadmap-wrapper {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding-left: 40px;
+.roadmap {
   position: relative;
+  max-width: 600px;
+  margin: 4rem auto;
 }
 
-/* Base line */
-.roadmap-line {
+.roadmap::before {
+  content: "";
   position: absolute;
-  left: 18px;
+  left: 5px;
   top: 0;
   width: 2px;
   height: 100%;
-  background: rgba(255,255,255,0.1);
-  overflow: hidden;
+  background: rgba(255,255,255,0.15);
 }
 
-/* Animated fill */
-.roadmap-line-fill {
+.roadmap::after {
+  content: "";
   position: absolute;
-  left: 0;
+  left: 5px;
   top: 0;
-  width: 100%;
+  width: 2px;
   height: 0%;
   background: #4ade80;
-  animation: fillLine 3s ease forwards;
+  animation: fillLine 3.5s ease forwards;
 }
 
-/* Animation: full first, half second, stop */
 @keyframes fillLine {
   0% { height: 0%; }
-  50% { height: 40%; }   /* First item fully */
-  75% { height: 55%; }   /* Half of second */
+  50% { height: 38%; }
+  75% { height: 55%; }
   100% { height: 55%; }
 }
 
 .roadmap-item {
   display: flex;
-  gap: 18px;
-  margin-bottom: 2.5rem;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 2.4rem;
   position: relative;
 }
 
-/* Diamond */
 .rhombus {
   width: 18px;
   height: 18px;
   transform: rotate(45deg);
-  margin-top: 5px;
-  flex-shrink: 0;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.25);
+  position: relative;
+  left: -4px;
   z-index: 2;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
-/* States */
+/* STATES */
 .completed .rhombus {
   background: #4ade80;
   border-color: #4ade80;
-  box-shadow: 0 0 10px rgba(74,222,128,0.6);
+  box-shadow: 0 0 8px rgba(74,222,128,0.6);
 }
 
 .current .rhombus {
@@ -115,35 +204,30 @@ h1, h2 {
     rgba(255,255,255,0.08) 50%
   );
   border-color: #4ade80;
-  box-shadow: 0 0 10px rgba(74,222,128,0.35);
 }
 
 .upcoming .rhombus {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.08);
 }
 
-/* Text */
-.roadmap-content {
-  max-width: 100%;
-}
-.roadmap-title {
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-.roadmap-desc {
-  font-size: 0.9rem;
-  color: #bdbdbd;
-  line-height: 1.5;
+.roadmap-item div {
+  color: #ddd;
+  line-height: 1.6;
 }
 
-/* Mobile */
+/* ================= FOOTER ================= */
+footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: #111;
+  text-align: center;
+  color: #888;
+}
+
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .roadmap-wrapper {
-    padding-left: 30px;
-  }
-  .roadmap-line {
-    left: 13px;
-  }
+  nav ul { display: none; }
+  .menu-toggle { display: flex; }
 }
 </style>
 </head>
@@ -151,67 +235,105 @@ h1, h2 {
 <body>
 
 <header>
-  <div class="logo"><span>CROSS</span>WORLD</div>
+  <div class="logo">
+    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="#">Join Discord</a></li>
+    </ul>
+  </nav>
+
+  <div class="menu-toggle" id="menuToggle">
+    <div></div><div></div><div></div>
+  </div>
 </header>
 
-<h1>About CrossWorld League</h1>
-<p class="page-text">
-CrossWorld League is a modern competitive league built for long-term stability,
-custom systems, and an organized future around Soccer Zero.
-</p>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="staff.html">Staff</a>
+  <a href="#">Join Discord</a>
+</div>
 
-<h2 style="margin-top:4rem;">Roadmap</h2>
+<div class="page-badge">📍 About</div>
+<h1 class="page-title">About CrossWorld League</h1>
 
-<div class="roadmap-wrapper">
+<div class="page-text">
+CrossWorld League is built to be long-term, organized, and modern.
+We focus on automation, structure, and community trust — not short-lived hype.
+</div>
 
-  <div class="roadmap-line">
-    <div class="roadmap-line-fill"></div>
-  </div>
+<h2 style="text-align:center;margin-top:4rem;">Roadmap</h2>
+
+<div class="roadmap">
 
   <div class="roadmap-item completed">
     <div class="rhombus"></div>
-    <div class="roadmap-content">
-      <div class="roadmap-title">Website foundation completed</div>
-      <div class="roadmap-desc">
-        Core layout, pages, and structure are finished and tested to ensure
-        everything runs smoothly.
-      </div>
+    <div>
+      <strong>Test Website Phase</strong><br>
+      Building and polishing the website, testing UI, menus, mobile layouts,
+      and making sure everything is stable before public expansion.
     </div>
   </div>
 
   <div class="roadmap-item current">
     <div class="rhombus"></div>
-    <div class="roadmap-content">
-      <div class="roadmap-title">Staff recruitment (Current)</div>
-      <div class="roadmap-desc">
-        Bringing in staff, assigning responsibilities, and preparing internal
-        systems before public launch.
-      </div>
+    <div>
+      <strong>Current Phase</strong><br>
+      Recruiting staff members, organizing roles, setting rules,
+      and preparing internal systems to run smoothly.
     </div>
   </div>
 
   <div class="roadmap-item upcoming">
     <div class="rhombus"></div>
-    <div class="roadmap-content">
-      <div class="roadmap-title">Post-release preparation</div>
-      <div class="roadmap-desc">
-        Teams, rules, scheduling, and competitive structure finalized after
-        game release.
-      </div>
+    <div>
+      <strong>Post Game Release</strong><br>
+      Full league setup, team creation, competitive structure,
+      scheduling systems, and public operations.
     </div>
   </div>
 
   <div class="roadmap-item upcoming">
     <div class="rhombus"></div>
-    <div class="roadmap-content">
-      <div class="roadmap-title">Matches & league activity</div>
-      <div class="roadmap-desc">
-        Official matches begin, standings update, and the league fully goes live.
-      </div>
+    <div>
+      <strong>Matches & League Operations</strong><br>
+      Official matches, stats tracking, rankings,
+      events, seasons, and long-term league growth.
     </div>
   </div>
 
 </div>
+
+<footer>
+© 2025 CrossWorld League | Site by meow
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const links = mobileMenu.querySelectorAll("a");
+
+menuToggle.onclick = () => {
+  if (mobileMenu.style.right === "0px") {
+    mobileMenu.style.right = "-300px";
+    links.forEach(l => { l.style.opacity = 0; l.style.transform = "translateX(20px)"; });
+  } else {
+    mobileMenu.style.right = "0";
+    links.forEach((l,i) => {
+      setTimeout(() => {
+        l.style.opacity = 1;
+        l.style.transform = "translateX(0)";
+      }, i * 80);
+    });
+  }
+};
+</script>
 
 </body>
 </html>

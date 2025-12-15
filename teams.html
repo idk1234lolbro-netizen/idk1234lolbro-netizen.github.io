@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Teams - CROSSWORLD LEAGUE</title>
+
+<style>
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #111;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.logo-cross { color: #4ade80; }
+.logo-world { color: #f5f5f5; }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  padding: 0.2rem 0.4rem;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #00d4ff;
+  border-bottom: 2px solid #00d4ff;
+}
+
+/* ================= MOBILE MENU ================= */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu-toggle div {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 250px;
+  height: 100%;
+  background: rgba(15,15,15,0.98);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: right 0.35s ease;
+  z-index: 2000;
+}
+
+.mobile-menu a {
+  font-size: 1.4rem;
+  color: #f5f5f5;
+}
+
+/* ================= PAGE ================= */
+.page-badge {
+  max-width: 900px;
+  margin: 3rem auto 1rem;
+  padding: 0.6rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(74,222,128,0.5);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+/* ================= BOX ================= */
+.info-box {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  text-align: center;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+.info-box strong {
+  color: #f5f5f5;
+}
+
+.info-box .highlight {
+  color: #00d4ff;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  padding: 2rem;
+  background: #111;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .menu-toggle { display: flex; }
+  .page-title { font-size: 2rem; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="teams.html" class="active">Teams</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="menu-toggle" id="menuToggle">
+    <div></div><div></div><div></div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="staff.html">Staff</a>
+  <a href="teams.html" class="active">Teams</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="page-badge">📍 Teams</div>
+<h1 class="page-title">League Teams</h1>
+
+<div class="info-box">
+  <strong>There are currently no official teams in CrossWorld League.</strong>
+  <br><br>
+  Once teams are introduced, they will be managed by
+  <span class="highlight">CWL | Club Managers</span>.
+  <br><br>
+  To become a Club Manager, you must meet the requirements listed in the
+  <strong>update channel</strong>.
+  <br><br>
+  Each team must have a minimum of <strong>6 active members</strong> to be approved.
+  This helps ensure fair competition and proper match scheduling.
+  <br><br>
+  For more information about creating or joining a team, please contact a
+  <strong>Moderator</strong>.
+</div>
+
+<footer>
+  © 2025 CrossWorld League
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuToggle.addEventListener("click", () => {
+  mobileMenu.style.right = mobileMenu.style.right === "0px" ? "-300px" : "0";
+});
+
+document.addEventListener("click", e => {
+  if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+    mobileMenu.style.right = "-300px";
+  }
+});
+</script>
+
+</body>
+</html>

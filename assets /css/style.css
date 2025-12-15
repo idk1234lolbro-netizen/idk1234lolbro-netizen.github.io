@@ -1,0 +1,256 @@
+/* =========================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================= */
+* { box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(17, 17, 17, 0.95); /* Slightly transparent */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; }
+.logo-cross { color: #4ade80; }
+.logo-world { color: #f5f5f5; }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    padding: 0.2rem 0.4rem;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #00d4ff;
+    border-bottom: 2px solid #00d4ff;
+}
+
+/* =========================================
+   3. MOBILE MENU
+   ========================================= */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.menu-toggle div { width: 26px; height: 3px; background: #fff; }
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 250px;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.98);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: right 0.35s ease;
+    z-index: 2000;
+    overflow-y: auto;
+    border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.mobile-menu a {
+    font-size: 1.5rem;
+    color: #f5f5f5 !important;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.35s ease;
+}
+
+.mobile-menu a:hover { color: #00d4ff; }
+.mobile-menu a.active { color: #00d4ff; font-weight: bold; }
+
+/* =========================================
+   4. COMMON PAGE ELEMENTS
+   ========================================= */
+.page-badge {
+    max-width: 900px;
+    margin: 3rem auto 1rem;
+    padding: 0.6rem 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(74,222,128,0.5);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.page-text {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: #ccc;
+    text-align: center;
+}
+
+/* =========================================
+   5. HOME PAGE (HERO)
+   ========================================= */
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Make sure you have the image in this path */
+    background: url('../../assets/img/background/background.png') center/cover no-repeat;
+    position: relative;
+    text-align: center;
+}
+.hero::before {
+    content: ""; position: absolute; top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6); z-index: 1;
+}
+.hero * { position: relative; z-index: 2; }
+
+.location-box {
+    padding: 0.3rem 0.8rem; background: rgba(34,34,34,0.6);
+    color: #f5f5f5; border-radius: 5px; margin-bottom: 1rem;
+    border: 1px solid #4ade80; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 10px #4ade80; }
+    50% { box-shadow: 0 0 20px #4ade80; }
+}
+
+.hero h1 { font-size: 4rem; margin: 0.5rem 0; text-shadow: 0 0 15px rgba(0,255,106,0.7); }
+.hero button {
+    padding: 0.8rem 1.5rem; margin: 0.5rem; border: none; border-radius: 5px;
+    cursor: pointer; font-weight: bold; transition: 0.3s;
+}
+.hero button.primary { background: #4ade80; color: #0a0a0a; }
+.hero button.secondary { background: #00d4ff; color: #0a0a0a; }
+.hero button:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+/* =========================================
+   6. STAFF & ABOUT BOXES
+   ========================================= */
+.staff-container, .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.8rem;
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.staff-box, .feature-box {
+    width: 260px;
+    padding: 2rem 1.6rem 1.8rem;
+    background: linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95));
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    transition: transform 0.5s ease;
+}
+.staff-box:hover, .feature-box:hover { transform: scale(1.06); }
+.custom-emoji, .feature-box svg { width: 46px; height: 46px; margin-bottom: 1rem; }
+.staff-box h3, .feature-box h3 { margin-bottom: 0.6rem; font-size: 1.2rem; }
+.staff-box p, .feature-box p { font-size: 0.95rem; line-height: 1.5; color: #d0d0d0; }
+
+/* =========================================
+   7. TEAMS PAGE
+   ========================================= */
+.teams-container {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+    max-width: 1200px; margin: 3rem auto 5rem; padding: 0 1rem;
+}
+.team-card {
+    background: linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95));
+    border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);
+    width: 300px; overflow: hidden; transition: 0.4s ease;
+}
+.team-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0,212,255,0.15); }
+.team-logo {
+    height: 150px; display: flex; justify-content: center; align-items: center;
+    background: #0a0a0a; border-bottom: 2px solid #222;
+}
+.team-logo img { max-width: 80%; max-height: 80%; }
+.team-info { padding: 1.5rem; text-align: center; }
+.team-info h3 { margin: 0 0 0.5rem; font-size: 1.5rem; color: #00d4ff; text-transform: uppercase; }
+.team-stats {
+    display: flex; justify-content: space-around; padding: 0.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.05); margin-top: 1rem;
+}
+.team-stats span { display: block; font-size: 1.2rem; font-weight: bold; }
+.team-stats small { font-size: 0.75rem; color: #888; text-transform: uppercase; }
+
+/* =========================================
+   8. MATCHES / SCOREBOARD
+   ========================================= */
+.match-container { max-width: 1100px; margin: 3rem auto; display: flex; flex-direction: column; gap: 30px; padding: 0 1rem; }
+.scoreboard {
+    display: flex; flex-direction: column;
+    background: linear-gradient(145deg, #1f1f1f, #0d0d0d);
+    border-radius: 12px; border: 1px solid #4ade8055;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+.scoreboard:hover { transform: translateY(-5px); border-color: #00d4ff; }
+.status-bar { padding: 0.5rem; font-weight: bold; color: #0a0a0a; text-align: center; border-radius: 12px 12px 0 0; }
+.status-bar.live { background: #ef4444; }
+.status-bar.upcoming { background: #facc15; }
+.status-bar.finished { background: #4ade80; }
+.match-details { display: flex; justify-content: space-between; align-items: center; padding: 2rem 1.5rem; gap: 20px; }
+.score { font-size: 3.5rem; font-weight: 900; color: #00d4ff; }
+.live-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: white; margin-right: 5px; animation: blink 1.5s infinite; }
+@keyframes blink { 0%, 100% { background: white; } 50% { background: #ef4444; } }
+
+/* =========================================
+   9. FOOTER
+   ========================================= */
+footer { margin-top: 4rem; padding: 2rem; background: #111; text-align: center; font-size: 0.9rem; color: #888; }
+
+/* =========================================
+   10. GLOBAL RESPONSIVE
+   ========================================= */
+@media(max-width: 768px) {
+    nav ul { display: none; }
+    .menu-toggle { display: flex; }
+    .page-title { font-size: 2rem; }
+    .hero h1 { font-size: 3rem; }
+    .match-details { flex-direction: column; }
+    .score-display { order: -1; margin-bottom: 1rem; }
+    .staff-box, .team-card { width: 100%; }
+  }
+         

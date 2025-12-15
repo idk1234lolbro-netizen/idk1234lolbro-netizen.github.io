@@ -4,50 +4,36 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Staff - CROSSWORLD LEAGUE</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
 <style>
-* { box-sizing: border-box; }
-html, body { height: 100%; width: 100%; margin:0; padding:0; font-family: Arial, sans-serif; background: #0a0a0a; color: #f5f5f5; overflow-x: hidden; }
-a { text-decoration: none; color: inherit; }
-
-/* ================= HEADER ================= */
-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #111; position: sticky; top: 0; z-index:1000;}
-.logo { font-size:1.5rem; font-weight:bold; }
-.logo-cross { color:#4ade80; }
-.logo-world { color:#f5f5f5; }
-nav ul { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
-nav ul li a { padding:0.2rem 0.4rem; transition:0.3s; }
-nav ul li a:hover, nav ul li a.active { color:#00d4ff; border-bottom:2px solid #00d4ff; }
-
-/* ================= MOBILE MENU ================= */
-.menu-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-.menu-toggle div { width:26px; height:3px; background:#fff; }
-.mobile-menu { position:fixed; top:0; right:-300px; width:250px; height:100%; background:rgba(15,15,15,0.98); padding:2rem 1.5rem; display:flex; flex-direction:column; gap:2rem; transition:right 0.35s ease; z-index:2000; overflow-y:auto; border-left:1px solid rgba(255,255,255,0.08);}
-.mobile-menu a { font-size:1.5rem; color:#f5f5f5 !important; opacity:0; transform:translateX(20px); transition: all 0.35s ease;}
-.mobile-menu a:hover { color:#00d4ff; }
-.mobile-menu a.active { color:#00d4ff; font-weight:bold; }
-
-/* ================= PAGE ================= */
-.page-badge { max-width:900px; margin:3rem auto 1rem; padding:0.6rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(74,222,128,0.5); border-radius:6px; text-align:center; }
-.page-title { text-align:center; font-size:2.8rem; margin-bottom:2rem; }
-.page-text { max-width:900px; margin:auto; padding:0 1rem; font-size:1.1rem; line-height:1.65; color:#ccc; }
-
-/* ================= STAFF BOXES ================= */
-.staff-container { display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; max-width:1100px; margin:3rem auto; padding:0 1rem; }
-.staff-box { width:260px; padding:2rem 1.6rem 1.8rem; background:linear-gradient(180deg, rgba(30,30,30,0.9), rgba(18,18,18,0.95)); border-radius:14px; border:1px solid rgba(255,255,255,0.08); position:relative; text-align:center; opacity:0; transform:translateY(50px); transition: transform 0.5s ease, opacity 0.5s ease;}
-.staff-box.visible { opacity:1; transform:translateY(0); }
-.staff-box:hover { transform: scale(1.06); }
-.custom-emoji { width:46px; height:46px; margin-bottom:1rem; }
-.staff-box h3 { margin-bottom:0.6rem; font-size:1.2rem; }
-.staff-box p { font-size:0.95rem; line-height:1.5; color:#d0d0d0; text-align:left; }
-
-/* ================= FOOTER ================= */
-footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font-size:0.9rem; color:#888; }
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){ nav ul{display:none;} .menu-toggle{display:flex;} .page-title{font-size:2rem;} .staff-box{width:100%; transform:translateY(0) !important;} }
+  /* These keep the video behind the content */
+  #video-background {
+    position: fixed;
+    top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.3; /* Adjust brightness of video here */
+  }
+  .overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -99;
+  }
 </style>
 </head>
 <body>
+
+<video autoplay muted loop id="video-background">
+  <source src="Desktop_2025.11.03_-_12.59.09.01~2 (1).mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
 <header>
   <div class="logo"><span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span></div>
   <nav>
@@ -74,12 +60,11 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
 
 <div class="page-badge">📍 Staff</div>
 <h1 class="page-title">Meet Our Staff</h1>
-<div class="page-text" style="text-align:center;">
+<div class="page-text">
   Roles will most likely be selected by member votes, so be friendly and active in the community!<br><br>
 </div>
 
 <div class="staff-container">
-  <!-- Owner -->
   <div class="staff-box">
     <svg class="custom-emoji" viewBox="0 0 24 24">
       <path fill="url(#gradOwner)" d="M12 2L15 8h6l-5 5 2 6-6-3-6 3 2-6-5-5h6z"/>
@@ -94,7 +79,6 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
     <p><strong>About:</strong> Top authority of CWL. Responsible for overall decisions.<br><strong>How to get:</strong> Fixed (hammerofthor)</p>
   </div>
 
-  <!-- Chairman -->
   <div class="staff-box">
     <svg class="custom-emoji" viewBox="0 0 24 24">
       <path fill="url(#gradChairman)" d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
@@ -109,7 +93,6 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
     <p><strong>About:</strong> Assists the Owner, oversees operations, helps with bot & website.<br><strong>How to get:</strong> Assigned by Owner (meow)</p>
   </div>
 
-  <!-- Head Manager -->
   <div class="staff-box">
     <svg class="custom-emoji" viewBox="0 0 24 24">
       <path fill="url(#gradHead)" d="M12 2L2 22h20L12 2z"/>
@@ -121,10 +104,9 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
       </defs>
     </svg>
     <h3>Head Manager</h3>
-    <p><strong>About:</strong> Manages staff team, schedules matches, coordinates events.<br><strong>How to get:</strong> Only 5 at a time, selected via member vote events. Number can change.</p>
+    <p><strong>About:</strong> Manages staff team, schedules matches, coordinates events.<br><strong>How to get:</strong> Only 5 at a time, selected via member vote events.</p>
   </div>
 
-  <!-- Lead Staff -->
   <div class="staff-box">
     <svg class="custom-emoji" viewBox="0 0 24 24">
       <path fill="url(#gradLead)" d="M12 2c5 0 9 4 9 9s-4 9-9 9-9-4-9-9 4-9 9-9z"/>
@@ -136,10 +118,9 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
       </defs>
     </svg>
     <h3>Lead Staff</h3>
-    <p><strong>About:</strong> Supervises lower-level staff, manages departments, reports tasks.<br><strong>How to get:</strong> Staff application required, voted by members, experience needed.</p>
+    <p><strong>About:</strong> Supervises lower-level staff, manages departments, reports tasks.<br><strong>How to get:</strong> Staff application required, voted by members.</p>
   </div>
 
-  <!-- League Admin -->
   <div class="staff-box">
     <svg class="custom-emoji" viewBox="0 0 24 24">
       <path fill="url(#gradAdmin)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
@@ -154,7 +135,6 @@ footer { margin-top:4rem; padding:2rem; background:#111; text-align:center; font
     <p><strong>About:</strong> Handles daily admin tasks, moderates, updates records.<br><strong>How to get:</strong> Can be promoted from moderator based on activity & trust.</p>
   </div>
 
-  <!-- Moderator -->
   <div class="staff-box">
     <svg class="custom-emoji" viewBox="0 0 24 24">
       <path fill="url(#gradMod)" d="M12 2l3 7h7l-5 5 2 7-7-4-7 4 2-7-5-5h7z"/>
@@ -195,7 +175,7 @@ document.addEventListener("click", e => {
   }
 });
 
-// Staff boxes animation on scroll
+// Staff boxes animation
 window.addEventListener('DOMContentLoaded', () => {
   const boxes=document.querySelectorAll('.staff-box');
   boxes.forEach((box,index)=>{setTimeout(()=>{box.classList.add('visible');},index*200)});

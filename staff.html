@@ -4,128 +4,66 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Staff - CROSSWORLD LEAGUE</title>
-<link rel="stylesheet" href="assets/css/style.css"> 
+<style>
+  /* Basic structure to ensure readability */
+  body { font-family: sans-serif; margin: 20px; background-color: white; color: black; }
+  header, nav, footer { border: 1px solid #ccc; padding: 10px; margin-bottom: 20px; }
+  nav ul { list-style: none; padding: 0; }
+  nav li { display: inline; margin-right: 15px; }
+  .staff-container { margin-top: 20px; }
+  .staff-box { border: 1px solid #aaa; margin-bottom: 10px; padding: 10px; }
+</style>
 </head>
 <body>
 
-<video autoplay muted loop id="video-background">
-  <source src="Desktop_2025.11.03_-_12.59.09.01~2 (1).mp4" type="video/mp4">
-</video>
-<div class="overlay"></div>
-
 <header>
-  <div class="logo"><span class="logo-cross">CROSS</span><span class="logo-world">WORLD</span></div>
+  <div class="logo">CROSSWORLD LEAGUE</div>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="staff.html" class="active">Staff</a></li>
+      <li><a href="staff.html">Staff</a></li>
       <li><a href="teams.html">Teams</a></li>
       <li><a href="matches.html">Matches</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="https://discord.gg/yourserver" target="_blank">Join Discord</a></li>
     </ul>
   </nav>
-  <div class="menu-toggle" id="menuToggle"><div></div><div></div><div></div></div>
-</header>
+  </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="staff.html" class="active">Staff</a>
-  <a href="teams.html">Teams</a>
-  <a href="matches.html">Matches</a>
-  <a href="contact.html">Contact</a>
-  <a href="https://discord.gg/yourserver" target="_blank">Join Discord</a>
-</div>
-
-<div class="page-badge">📍 Staff</div>
-<h1 class="page-title">Meet Our Staff</h1>
-<div class="page-text">
-  Roles will most likely be selected by member votes, so be friendly and active in the community!<br><br>
+<div>📍 Staff</div>
+<h1>Meet Our Staff</h1>
+<div>
+  Roles will most likely be selected by member votes, so be friendly and active in the community!
 </div>
 
 <div class="staff-container">
   <div class="staff-box">
-    <svg class="custom-emoji" viewBox="0 0 24 24">
-      <path fill="url(#gradOwner)" d="M12 2L15 8h6l-5 5 2 6-6-3-6 3 2-6-5-5h6z"/>
-      <defs>
-        <linearGradient id="gradOwner" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#4ade80"/>
-          <stop offset="100%" stop-color="#00d4ff"/>
-        </linearGradient>
-      </defs>
-    </svg>
     <h3>Owner / President</h3>
     <p><strong>About:</strong> Top authority of CWL. Responsible for overall decisions.<br><strong>How to get:</strong> Fixed (hammerofthor)</p>
   </div>
 
   <div class="staff-box">
-    <svg class="custom-emoji" viewBox="0 0 24 24">
-      <path fill="url(#gradChairman)" d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-      <defs>
-        <linearGradient id="gradChairman" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#facc15"/>
-          <stop offset="100%" stop-color="#f472b6"/>
-        </linearGradient>
-      </defs>
-    </svg>
     <h3>Chairman</h3>
     <p><strong>About:</strong> Assists the Owner, oversees operations, helps with bot & website.<br><strong>How to get:</strong> Assigned by Owner (meow)</p>
   </div>
 
   <div class="staff-box">
-    <svg class="custom-emoji" viewBox="0 0 24 24">
-      <path fill="url(#gradHead)" d="M12 2L2 22h20L12 2z"/>
-      <defs>
-        <linearGradient id="gradHead" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#f97316"/>
-          <stop offset="100%" stop-color="#ef4444"/>
-        </linearGradient>
-      </defs>
-    </svg>
     <h3>Head Manager</h3>
     <p><strong>About:</strong> Manages staff team, schedules matches, coordinates events.<br><strong>How to get:</strong> Only 5 at a time, selected via member vote events.</p>
   </div>
 
   <div class="staff-box">
-    <svg class="custom-emoji" viewBox="0 0 24 24">
-      <path fill="url(#gradLead)" d="M12 2c5 0 9 4 9 9s-4 9-9 9-9-4-9-9 4-9 9-9z"/>
-      <defs>
-        <linearGradient id="gradLead" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#10b981"/>
-          <stop offset="100%" stop-color="#3b82f6"/>
-        </linearGradient>
-      </defs>
-    </svg>
     <h3>Lead Staff</h3>
     <p><strong>About:</strong> Supervises lower-level staff, manages departments, reports tasks.<br><strong>How to get:</strong> Staff application required, voted by members.</p>
   </div>
 
   <div class="staff-box">
-    <svg class="custom-emoji" viewBox="0 0 24 24">
-      <path fill="url(#gradAdmin)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-      <defs>
-        <linearGradient id="gradAdmin" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#f59e0b"/>
-          <stop offset="100%" stop-color="#ef4444"/>
-        </linearGradient>
-      </defs>
-    </svg>
     <h3>League Admin</h3>
     <p><strong>About:</strong> Handles daily admin tasks, moderates, updates records.<br><strong>How to get:</strong> Can be promoted from moderator based on activity & trust.</p>
   </div>
 
   <div class="staff-box">
-    <svg class="custom-emoji" viewBox="0 0 24 24">
-      <path fill="url(#gradMod)" d="M12 2l3 7h7l-5 5 2 7-7-4-7 4 2-7-5-5h7z"/>
-      <defs>
-        <linearGradient id="gradMod" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#8b5cf6"/>
-          <stop offset="100%" stop-color="#3b82f6"/>
-        </linearGradient>
-      </defs>
-    </svg>
     <h3>Moderator</h3>
     <p><strong>About:</strong> Ensures rules are followed, assists players, reports issues.<br><strong>How to get:</strong> Active community members, apply via events & vote.</p>
   </div>
@@ -135,40 +73,5 @@
   © 2025 CrossWorld League | Site by meow
 </footer>
 
-<script>
-// Mobile menu toggle
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const links = mobileMenu.querySelectorAll("a");
-menuToggle.addEventListener("click", () => {
-  if (mobileMenu.style.right === "0px") {
-    mobileMenu.style.right = "-300px";
-    links.forEach(link => { link.style.opacity = 0; link.style.transform = "translateX(20px)"; });
-  } else {
-    mobileMenu.style.right = "0";
-    links.forEach((link,i)=>{setTimeout(()=>{link.style.opacity=1;link.style.transform="translateX(0)";}, i*90)});
-  }
-});
-document.addEventListener("click", e => {
-  if(!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)){
-    mobileMenu.style.right="-300px";
-    links.forEach(link => { link.style.opacity = 0; link.style.transform="translateX(20px)"; });
-  }
-});
-
-// Staff boxes animation
-window.addEventListener('DOMContentLoaded', () => {
-  const boxes=document.querySelectorAll('.staff-box');
-  boxes.forEach((box,index)=>{setTimeout(()=>{box.classList.add('visible');},index*200)});
-});
-window.addEventListener('scroll',()=>{
-  const boxes=document.querySelectorAll('.staff-box');
-  boxes.forEach(box=>{
-    const boxTop=box.getBoundingClientRect().top;
-    const windowHeight=window.innerHeight;
-    if(boxTop<windowHeight-50){box.classList.add('visible');}
-  });
-});
-</script>
 </body>
 </html>

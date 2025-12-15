@@ -131,8 +131,8 @@ nav ul li a:hover, nav ul li a.active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Make sure you have the image in this path */
-    background: url('../../assets/img/background/background.png') center/cover no-repeat;
+    /* Ensure image path is correct */
+    background: url('assets/img/background/background.png') center/cover no-repeat; 
     position: relative;
     text-align: center;
 }
@@ -184,7 +184,11 @@ nav ul li a:hover, nav ul li a.active {
     transition: transform 0.5s ease;
 }
 .staff-box:hover, .feature-box:hover { transform: scale(1.06); }
-.custom-emoji, .feature-box svg { width: 46px; height: 46px; margin-bottom: 1rem; }
+.custom-emoji, .feature-box svg { 
+    width: 46px; /* FIXED SVG SIZE */
+    height: 46px; /* FIXED SVG SIZE */
+    margin-bottom: 1rem; 
+}
 .staff-box h3, .feature-box h3 { margin-bottom: 0.6rem; font-size: 1.2rem; }
 .staff-box p, .feature-box p { font-size: 0.95rem; line-height: 1.5; color: #d0d0d0; }
 
@@ -237,13 +241,30 @@ nav ul li a:hover, nav ul li a.active {
 @keyframes blink { 0%, 100% { background: white; } 50% { background: #ef4444; } }
 
 /* =========================================
-   9. FOOTER
+   9. STAFF PAGE VIDEO BACKGROUND
+   ========================================= */
+#video-background {
+    position: fixed;
+    top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.3; 
+}
+.overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -99;
+}
+
+/* =========================================
+   10. FOOTER & GLOBAL RESPONSIVE
    ========================================= */
 footer { margin-top: 4rem; padding: 2rem; background: #111; text-align: center; font-size: 0.9rem; color: #888; }
 
-/* =========================================
-   10. GLOBAL RESPONSIVE
-   ========================================= */
 @media(max-width: 768px) {
     nav ul { display: none; }
     .menu-toggle { display: flex; }
@@ -252,5 +273,4 @@ footer { margin-top: 4rem; padding: 2rem; background: #111; text-align: center; 
     .match-details { flex-direction: column; }
     .score-display { order: -1; margin-bottom: 1rem; }
     .staff-box, .team-card { width: 100%; }
-  }
-         
+}
